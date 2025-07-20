@@ -13,14 +13,7 @@
 
 ## 使用方法
 
-该脚本接收 `config` 和 `profileName` 作为参数，并返回修改后的配置。
-
-```javascript
-function main(config, profileName) {
-    // ...
-    return config;
-}
-```
+复制内容→侧边栏→订阅→全局配拓展脚本→粘贴
 
 ## 规则提供者
 
