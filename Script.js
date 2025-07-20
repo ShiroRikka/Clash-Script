@@ -1,6 +1,10 @@
 // Define main function (script entry)
 
 function main(config, profileName) {
+    if (!config || !Array.isArray(config['proxy-groups']) || config['proxy-groups'].length === 0) {
+        console.log("这个订阅没有代理组")
+        return config;
+    }
     // 1. 定义 Loyalsoldier/clash-rules 的 rule-providers
     // 这部分是固定的，用于从 Loyalsoldier 的 GitHub 仓库加载规则集
     const customRuleProviders = {
@@ -112,10 +116,22 @@ function main(config, profileName) {
 
     // 2. 动态查找主代理组名称
     // 默认的兜底代理组名称，如果配置文件中没有找到合适的代理组，将使用此名称
-    let mainProxyGroup = profileName;
+    const autoSelectGroup = config["proxy-groups"].find(
+        (group) => group.type === "url-test"
+    );
 
     // 检查配置文件中是否存在代理组，并且是数组类型
     const groupNames = config["proxy-groups"].map((group) => group.name);
+    console.log(groupNames);
+
+    autoSelectGroup.interval = 300;
+
+    let mainProxyGroup;
+    if (groupNames.includes(profileName)) {
+        mainProxyGroup = profileName;
+    } else {
+        mainProxyGroup = config["proxy-groups"][0].name;
+    }
 
     // 3. 构建自定义规则列表，使用动态确定的 mainProxyGroup
     const customRules = [
@@ -159,15 +175,7 @@ function main(config, profileName) {
     // 将自定义规则放在现有规则的最前面，确保它们具有最高的匹配优先级
     config.rules = customRules;
 
-    const autoSelectGroup = config["proxy-groups"].find(
-        (group) => group.type === "url-test"
-    );
-
-    autoSelectGroup.interval = 300;
-
-
-
-    console.log(config);
+    //console.log(config);
     // 返回修改后的配置
     return config;
 }
