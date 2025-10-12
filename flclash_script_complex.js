@@ -6,8 +6,17 @@ function main(config) {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png",
       type: "select",
       proxies: [
-        "自动选择", "香港节点", "台湾节点", "狮城节点", "美国节点", "日本节点", "韩国节点", "其他节点", "手动切换", "DIRECT"
-      ]
+        "自动选择",
+        "香港节点",
+        "台湾节点",
+        "狮城节点",
+        "美国节点",
+        "日本节点",
+        "韩国节点",
+        "其他节点",
+        "手动切换",
+        "DIRECT",
+      ],
     },
     {
       name: "自动选择",
@@ -16,141 +25,257 @@ function main(config) {
       "include-all": true,
       "exclude-filter": "(?i)香港|Hong Kong|HK|hongkong",
       interval: 300,
-      tolerance: 50
+      tolerance: 50,
     },
     {
       name: "手动切换",
       icon: "https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png",
       "include-all": true,
-      type: "select"
+      type: "select",
     },
     {
       name: "AI节点",
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bot.png",
       type: "select",
       proxies: [
-        "美国节点", "节点选择", "自动选择", "狮城节点", "香港节点", "台湾节点", "日本节点", "韩国节点", "其他节点", "手动切换", "DIRECT"
-      ]
+        "美国节点",
+        "节点选择",
+        "自动选择",
+        "狮城节点",
+        "香港节点",
+        "台湾节点",
+        "日本节点",
+        "韩国节点",
+        "其他节点",
+        "手动切换",
+        "DIRECT",
+      ],
     },
     {
       name: "电报消息",
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Telegram.png",
       type: "select",
       proxies: [
-        "美国节点", "节点选择", "自动选择", "狮城节点", "香港节点", "台湾节点", "日本节点", "韩国节点", "其他节点", "手动切换", "DIRECT"
-      ]
+        "美国节点",
+        "节点选择",
+        "自动选择",
+        "狮城节点",
+        "香港节点",
+        "台湾节点",
+        "日本节点",
+        "韩国节点",
+        "其他节点",
+        "手动切换",
+        "DIRECT",
+      ],
     },
     {
       name: "油管视频",
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png",
       type: "select",
       proxies: [
-        "节点选择", "自动选择", "狮城节点", "香港节点", "台湾节点", "日本节点", "美国节点", "韩国节点", "其他节点", "手动切换", "DIRECT"
-      ]
+        "节点选择",
+        "自动选择",
+        "狮城节点",
+        "香港节点",
+        "台湾节点",
+        "日本节点",
+        "美国节点",
+        "韩国节点",
+        "其他节点",
+        "手动切换",
+        "DIRECT",
+      ],
     },
     {
       name: "奈飞视频",
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png",
       type: "select",
       proxies: [
-        "节点选择", "自动选择", "狮城节点", "香港节点", "台湾节点", "日本节点", "美国节点", "韩国节点", "其他节点", "手动切换", "DIRECT"
-      ]
+        "节点选择",
+        "自动选择",
+        "狮城节点",
+        "香港节点",
+        "台湾节点",
+        "日本节点",
+        "美国节点",
+        "韩国节点",
+        "其他节点",
+        "手动切换",
+        "DIRECT",
+      ],
     },
     {
       name: "国内媒体",
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png",
       type: "select",
       proxies: [
-        "DIRECT", "香港节点", "台湾节点", "狮城节点", "日本节点", "美国节点", "韩国节点", "其他节点", "手动切换"
-      ]
+        "DIRECT",
+        "香港节点",
+        "台湾节点",
+        "狮城节点",
+        "日本节点",
+        "美国节点",
+        "韩国节点",
+        "其他节点",
+        "手动切换",
+      ],
     },
     {
       name: "国外媒体",
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png",
       type: "select",
       proxies: [
-        "节点选择", "自动选择", "香港节点", "台湾节点", "狮城节点", "日本节点", "美国节点", "韩国节点", "其他节点", "手动切换", "DIRECT"
-      ]
+        "节点选择",
+        "自动选择",
+        "香港节点",
+        "台湾节点",
+        "狮城节点",
+        "日本节点",
+        "美国节点",
+        "韩国节点",
+        "其他节点",
+        "手动切换",
+        "DIRECT",
+      ],
     },
     {
       name: "谷歌FCM",
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png",
       type: "select",
       proxies: [
-        "DIRECT", "节点选择", "美国节点", "香港节点", "台湾节点", "狮城节点", "日本节点", "韩国节点", "其他节点", "手动切换"
-      ]
+        "DIRECT",
+        "节点选择",
+        "美国节点",
+        "香港节点",
+        "台湾节点",
+        "狮城节点",
+        "日本节点",
+        "韩国节点",
+        "其他节点",
+        "手动切换",
+      ],
     },
     {
       name: "微软Bing",
       icon: "https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/bing.png",
       type: "select",
       proxies: [
-        "DIRECT", "节点选择", "美国节点", "香港节点", "台湾节点", "狮城节点", "日本节点", "韩国节点", "其他节点", "手动切换"
-      ]
+        "DIRECT",
+        "节点选择",
+        "美国节点",
+        "香港节点",
+        "台湾节点",
+        "狮城节点",
+        "日本节点",
+        "韩国节点",
+        "其他节点",
+        "手动切换",
+      ],
     },
     {
       name: "微软云盘",
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/OneDrive.png",
       type: "select",
       proxies: [
-        "DIRECT", "节点选择", "美国节点", "香港节点", "台湾节点", "狮城节点", "日本节点", "韩国节点", "其他节点", "手动切换"
-      ]
+        "DIRECT",
+        "节点选择",
+        "美国节点",
+        "香港节点",
+        "台湾节点",
+        "狮城节点",
+        "日本节点",
+        "韩国节点",
+        "其他节点",
+        "手动切换",
+      ],
     },
     {
       name: "微软服务",
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png",
       type: "select",
       proxies: [
-        "节点选择", "DIRECT", "美国节点", "香港节点", "台湾节点", "狮城节点", "日本节点", "韩国节点", "其他节点", "手动切换"
-      ]
+        "节点选择",
+        "DIRECT",
+        "美国节点",
+        "香港节点",
+        "台湾节点",
+        "狮城节点",
+        "日本节点",
+        "韩国节点",
+        "其他节点",
+        "手动切换",
+      ],
     },
     {
       name: "苹果服务",
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Apple.png",
       type: "select",
       proxies: [
-        "DIRECT", "节点选择", "美国节点", "香港节点", "台湾节点", "狮城节点", "日本节点", "韩国节点", "其他节点", "手动切换"
-      ]
+        "DIRECT",
+        "节点选择",
+        "美国节点",
+        "香港节点",
+        "台湾节点",
+        "狮城节点",
+        "日本节点",
+        "韩国节点",
+        "其他节点",
+        "手动切换",
+      ],
     },
     {
       name: "游戏平台",
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png",
       type: "select",
       proxies: [
-        "DIRECT", "节点选择", "美国节点", "香港节点", "台湾节点", "狮城节点", "日本节点", "韩国节点", "其他节点", "手动切换"
-      ]
+        "DIRECT",
+        "节点选择",
+        "美国节点",
+        "香港节点",
+        "台湾节点",
+        "狮城节点",
+        "日本节点",
+        "韩国节点",
+        "其他节点",
+        "手动切换",
+      ],
     },
     {
       name: "全球直连",
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png",
       type: "select",
-      proxies: [
-        "DIRECT", "节点选择", "自动选择"
-      ]
+      proxies: ["DIRECT", "节点选择", "自动选择"],
     },
     {
       name: "广告拦截",
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png",
       type: "select",
-      proxies: [
-        "REJECT", "DIRECT"
-      ]
+      proxies: ["REJECT", "DIRECT"],
     },
     {
       name: "应用净化",
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png",
       type: "select",
-      proxies: [
-        "REJECT", "DIRECT"
-      ]
+      proxies: ["REJECT", "DIRECT"],
     },
     {
       name: "漏网之鱼",
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png",
       type: "select",
       proxies: [
-        "节点选择", "自动选择", "DIRECT", "香港节点", "台湾节点", "狮城节点", "日本节点", "美国节点", "韩国节点", "其他节点", "手动切换"
-      ]
+        "节点选择",
+        "自动选择",
+        "DIRECT",
+        "香港节点",
+        "台湾节点",
+        "狮城节点",
+        "日本节点",
+        "美国节点",
+        "韩国节点",
+        "其他节点",
+        "手动切换",
+      ],
     },
     {
       name: "香港节点",
@@ -159,7 +284,7 @@ function main(config) {
       filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong",
       type: "url-test",
       interval: 300,
-      tolerance: 50
+      tolerance: 50,
     },
     {
       name: "台湾节点",
@@ -168,7 +293,7 @@ function main(config) {
       filter: "(?i)台|新北|彰化|TW|Taiwan",
       type: "url-test",
       interval: 300,
-      tolerance: 50
+      tolerance: 50,
     },
     {
       name: "狮城节点",
@@ -177,16 +302,17 @@ function main(config) {
       filter: "(?i)新加坡|坡|狮城|SG|Singapore",
       type: "url-test",
       interval: 300,
-      tolerance: 50
+      tolerance: 50,
     },
     {
       name: "美国节点",
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png",
       "include-all": true,
-      filter: "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States",
+      filter:
+        "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States",
       type: "url-test",
       interval: 300,
-      tolerance: 50
+      tolerance: 50,
     },
     {
       name: "日本节点",
@@ -195,7 +321,7 @@ function main(config) {
       filter: "(?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan",
       type: "url-test",
       interval: 300,
-      tolerance: 50
+      tolerance: 50,
     },
     {
       name: "韩国节点",
@@ -204,16 +330,17 @@ function main(config) {
       filter: "(?i)KR|Korea|KOR|首尔|韩|韓",
       type: "url-test",
       interval: 300,
-      tolerance: 50
+      tolerance: 50,
     },
     {
       name: "其他节点",
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png",
       "include-all": true,
-      "exclude-filter": "(?i)港|HK|hk|Hong Kong|HongKong|hongkong|台|新北|彰化|TW|Taiwan|新加坡|坡|狮城|SG|Singapore|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|KR|Korea|KOR|首尔|韩|韓",
+      "exclude-filter":
+        "(?i)港|HK|hk|Hong Kong|HongKong|hongkong|台|新北|彰化|TW|Taiwan|新加坡|坡|狮城|SG|Singapore|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|KR|Korea|KOR|首尔|韩|韓",
       type: "url-test",
       interval: 300,
-      tolerance: 50
+      tolerance: 50,
     },
     {
       name: "GLOBAL",
@@ -221,9 +348,34 @@ function main(config) {
       "include-all": true,
       type: "select",
       proxies: [
-        "节点选择", "自动选择", "手动切换", "AI节点", "电报消息", "油管视频", "奈飞视频", "国内媒体", "国外媒体", "谷歌FCM", "微软Bing", "微软云盘", "微软服务", "苹果服务", "游戏平台", "全球直连", "广告拦截", "应用净化", "漏网之鱼", "香港节点", "台湾节点", "狮城节点", "美国节点", "日本节点", "韩国节点", "其他节点"
-      ]
-    }
+        "节点选择",
+        "自动选择",
+        "手动切换",
+        "AI节点",
+        "电报消息",
+        "油管视频",
+        "奈飞视频",
+        "国内媒体",
+        "国外媒体",
+        "谷歌FCM",
+        "微软Bing",
+        "微软云盘",
+        "微软服务",
+        "苹果服务",
+        "游戏平台",
+        "全球直连",
+        "广告拦截",
+        "应用净化",
+        "漏网之鱼",
+        "香港节点",
+        "台湾节点",
+        "狮城节点",
+        "美国节点",
+        "日本节点",
+        "韩国节点",
+        "其他节点",
+      ],
+    },
   ];
   config["rule-providers"] = {
     LocalAreaNetwork: {
@@ -232,7 +384,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     UnBan: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/UnBan.list",
@@ -240,7 +392,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     BanAD: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanAD.list",
@@ -248,7 +400,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     BanProgramAD: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanProgramAD.list",
@@ -256,7 +408,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     GoogleFCM: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/GoogleFCM.list",
@@ -264,7 +416,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     GoogleCN: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/GoogleCN.list",
@@ -272,7 +424,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     SteamCN: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/SteamCN.list",
@@ -280,7 +432,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     Bing: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Bing.list",
@@ -288,7 +440,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     OneDrive: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/OneDrive.list",
@@ -296,7 +448,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     Microsoft: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Microsoft.list",
@@ -304,7 +456,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     Apple: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Apple.list",
@@ -312,7 +464,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     Telegram: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Telegram.list",
@@ -320,7 +472,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     "AI平台-国外": {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/AI.list",
@@ -328,7 +480,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     NetEaseMusic: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/NetEaseMusic.list",
@@ -336,7 +488,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     Epic: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Epic.list",
@@ -344,7 +496,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     Origin: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Origin.list",
@@ -352,7 +504,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     Sony: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Sony.list",
@@ -360,7 +512,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     Steam: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Steam.list",
@@ -368,7 +520,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     Nintendo: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Nintendo.list",
@@ -376,7 +528,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     YouTube: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/YouTube.list",
@@ -384,7 +536,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     Netflix: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Netflix.list",
@@ -392,7 +544,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     Bahamut: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Bahamut.list",
@@ -400,7 +552,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     ChinaMedia: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaMedia.list",
@@ -408,7 +560,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     ProxyMedia: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyMedia.list",
@@ -416,7 +568,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     ProxyGFWlist: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyGFWlist.list",
@@ -424,7 +576,7 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     ChinaDomain: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaDomain.list",
@@ -432,7 +584,7 @@ function main(config) {
       behavior: "domain",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     ChinaCompanyIp: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaCompanyIp.list",
@@ -440,7 +592,7 @@ function main(config) {
       behavior: "ipcidr",
       interval: 86400,
       format: "text",
-      type: "http"
+      type: "http",
     },
     Download: {
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Download.list",
@@ -448,8 +600,8 @@ function main(config) {
       behavior: "classical",
       interval: 86400,
       format: "text",
-      type: "http"
-    }
+      type: "http",
+    },
   };
   config["rules"] = [
     "RULE-SET,LocalAreaNetwork,全球直连",
@@ -464,7 +616,7 @@ function main(config) {
     "RULE-SET,Microsoft,微软服务",
     "RULE-SET,Apple,苹果服务",
     "RULE-SET,Telegram,电报消息",
-    "RULE-SET,AI平台-国外,AI节点", 
+    "RULE-SET,AI平台-国外,AI节点",
     "RULE-SET,Epic,游戏平台",
     "RULE-SET,Origin,游戏平台",
     "RULE-SET,Sony,游戏平台",
@@ -479,7 +631,7 @@ function main(config) {
     "RULE-SET,ChinaCompanyIp,全球直连",
     "RULE-SET,Download,全球直连",
     "GEOIP,CN,全球直连",
-    "MATCH,漏网之鱼"
+    "MATCH,漏网之鱼",
   ];
   return config;
 }
