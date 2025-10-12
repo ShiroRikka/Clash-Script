@@ -188,10 +188,10 @@ function main(config) {
 
     // 广告拦截
     proxyGroups.push({
-        name: "广告拦截",
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png",
-        type: "select",
-        proxies: ["REJECT", "DIRECT"],
+      name: "广告拦截",
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png",
+      type: "select",
+      proxies: ["REJECT", "DIRECT", "节点选择"],
     });
 
     // 应用净化
@@ -199,7 +199,7 @@ function main(config) {
       name: "应用净化",
       icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/guard.svg",
       type: "select",
-      proxies: ["REJECT", "DIRECT"],
+      proxies: ["REJECT", "DIRECT", "节点选择"],
     });
 
     // 漏网之鱼
