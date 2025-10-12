@@ -131,14 +131,14 @@ function main(config) {
 
     // 节点选择
     proxyGroups.push({
-        name: "节点选择",
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png",
-        type: "select",
-        proxies: buildProxyList({
-            regions: availableRegions,
-            hasOther: hasOtherNodes,
-            additional: commonFallbackProxies,
-        }),
+      name: "节点选择",
+      icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg",
+      type: "select",
+      proxies: buildProxyList({
+        regions: availableRegions,
+        hasOther: hasOtherNodes,
+        additional: commonFallbackProxies,
+      }),
     });
 
     // 自动选择（自动选择延迟最低的节点）
@@ -196,22 +196,22 @@ function main(config) {
 
     // 应用净化
     proxyGroups.push({
-        name: "应用净化",
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png",
-        type: "select",
-        proxies: ["REJECT", "DIRECT"],
+      name: "应用净化",
+      icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/guard.svg",
+      type: "select",
+      proxies: ["REJECT", "DIRECT"],
     });
 
     // 漏网之鱼
     proxyGroups.push({
-        name: "漏网之鱼",
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png",
-        type: "select",
-        proxies: buildProxyList({
-            regions: availableRegions,
-            hasOther: hasOtherNodes,
-            additional: commonFallbackProxies,
-        }),
+      name: "漏网之鱼",
+      icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg",
+      type: "select",
+      proxies: buildProxyList({
+        regions: availableRegions,
+        hasOther: hasOtherNodes,
+        additional: commonFallbackProxies,
+      }),
     });
 
     // GLOBAL
