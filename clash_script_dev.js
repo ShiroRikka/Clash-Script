@@ -9,187 +9,211 @@ function main(config) {
     "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/";
 
   // 核心配置对象
-const settings = {
-  regionFilters: {
-    美国节点: {
-      icon: `${ICON_BASE_URL}flags/us.svg`,
-      filter: "(?i)\\b(美|硅谷|拉斯维加斯|西雅图|芝加哥|US|United States)\\b",
+  const settings = {
+    // 【关键重构】: 将优先级整合进配置，使数据内聚，避免分离维护导致的不一致问题
+    // priority: 数值越小，优先级越高（越先匹配）
+    regionFilters: {
+      香港节点: {
+        priority: 10,
+        icon: `${ICON_BASE_URL}flags/hk.svg`,
+        filter: "(?i)\\b(港|HK|hk|Hong Kong|HongKong|hongkong)\\b",
+      },
+      台湾节点: {
+        priority: 11,
+        icon: `${ICON_BASE_URL}flags/tw.svg`,
+        filter: "(?i)\\b(台|新北|彰化|TW|Taiwan)\\b",
+      },
+      新加坡节点: {
+        priority: 20,
+        icon: `${ICON_BASE_URL}flags/sg.svg`,
+        filter: "(?i)\\b(新加坡|坡|狮城|SG|Singapore)\\b",
+      },
+      日本节点: {
+        priority: 21,
+        icon: `${ICON_BASE_URL}flags/jp.svg`,
+        filter: "(?i)\\b(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan)\\b",
+      },
+      韩国节点: {
+        priority: 22,
+        icon: `${ICON_BASE_URL}flags/kr.svg`,
+        filter: "(?i)\\b(KR|Korea|韩国|首尔)\\b",
+      },
+      美国节点: {
+        priority: 30,
+        icon: `${ICON_BASE_URL}flags/us.svg`,
+        filter:
+          "(?i)\\b(美|硅谷|拉斯维加斯|西雅图|芝加哥|US|USA|United States)\\b",
+      },
+      加拿大节点: {
+        priority: 31,
+        icon: `${ICON_BASE_URL}flags/ca.svg`,
+        filter: "(?i)\\b(CA|Canada|加拿大|多伦多|温哥华)\\b",
+      },
+      英国节点: {
+        priority: 40,
+        icon: `${ICON_BASE_URL}flags/gb.svg`,
+        filter: "(?i)\\b(UK|GB|United Kingdom|英国|伦敦|Britain)\\b",
+      },
+      德国节点: {
+        priority: 50,
+        icon: `${ICON_BASE_URL}flags/de.svg`,
+        filter: "(?i)\\b(DE|Germany|德国|法兰克福)\\b",
+      },
+      法国节点: {
+        priority: 51,
+        icon: `${ICON_BASE_URL}flags/fr.svg`,
+        filter: "(?i)\\b(FR|France|法国|巴黎)\\b",
+      },
+      俄罗斯节点: {
+        priority: 60,
+        icon: `${ICON_BASE_URL}flags/ru.svg`,
+        filter: "(?i)\\b(RU|Russia|俄罗斯|莫斯科)\\b",
+      },
+      印度节点: {
+        priority: 70,
+        icon: `${ICON_BASE_URL}flags/in.svg`,
+        filter: "(?i)\\b(IND|India|印度|孟买)\\b",
+      },
+      荷兰节点: {
+        priority: 71,
+        icon: `${ICON_BASE_URL}flags/nl.svg`,
+        filter: "(?i)\\b(NL|Netherlands|荷兰|阿姆斯特丹)\\b",
+      },
+      越南节点: {
+        priority: 80,
+        icon: `${ICON_BASE_URL}flags/vn.svg`,
+        filter: "(?i)\\b(VN|Vietnam|越南)\\b",
+      },
+      伊朗节点: {
+        priority: 90,
+        icon: `${ICON_BASE_URL}flags/ir.svg`,
+        filter: "(?i)\\b(IR|Iran|伊朗|德黑兰)\\b",
+      },
+      联合国节点: {
+        priority: 95,
+        icon: `${ICON_BASE_URL}flags/un.svg`,
+        filter: "(?i)\\b(UN|United Nations|联合国)\\b",
+      },
+      中国节点: {
+        priority: 100, // 优先级最低，确保模糊的CN标识最后匹配
+        icon: `${ICON_BASE_URL}flags/cn.svg`,
+        filter: "(?i)\\b(中国|沪|京|浙|苏|CN|China)\\b",
+      },
     },
-    日本节点: {
-      icon: `${ICON_BASE_URL}flags/jp.svg`,
-      filter: "(?i)\\b(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan)\\b",
+    ruleProviders: {
+      // ... ruleProviders 配置保持不变 ...
+      LocalAreaNetwork: {
+        type: "http",
+        behavior: "classical",
+        url: `${RULESET_BASE_URL}LocalAreaNetwork.list`,
+        path: "./ruleset/LocalAreaNetwork.list",
+        interval: 86400,
+      },
+      UnBan: {
+        type: "http",
+        behavior: "classical",
+        url: `${RULESET_BASE_URL}UnBan.list`,
+        path: "./ruleset/UnBan.list",
+        interval: 86400,
+      },
+      BanAD: {
+        type: "http",
+        behavior: "classical",
+        url: `${RULESET_BASE_URL}BanAD.list`,
+        path: "./ruleset/BanAD.list",
+        interval: 86400,
+      },
+      BanProgramAD: {
+        type: "http",
+        behavior: "classical",
+        url: `${RULESET_BASE_URL}BanProgramAD.list`,
+        path: "./ruleset/BanProgramAD.list",
+        interval: 86400,
+      },
+      ProxyGFWlist: {
+        type: "http",
+        behavior: "classical",
+        url: `${RULESET_BASE_URL}ProxyGFWlist.list`,
+        path: "./ruleset/ProxyGFWlist.list",
+        interval: 86400,
+      },
+      ChinaDomain: {
+        type: "http",
+        behavior: "domain",
+        url: `${RULESET_BASE_URL}ChinaDomain.list`,
+        path: "./ruleset/ChinaDomain.list",
+        interval: 86400,
+      },
+      ChinaCompanyIp: {
+        type: "http",
+        behavior: "ipcidr",
+        url: `${RULESET_BASE_URL}ChinaCompanyIp.list`,
+        path: "./ruleset/ChinaCompanyIp.list",
+        interval: 86400,
+      },
+      Download: {
+        type: "http",
+        behavior: "classical",
+        url: `${RULESET_BASE_URL}Download.list`,
+        path: "./ruleset/Download.list",
+        interval: 86400,
+      },
     },
-    新加坡节点: {
-      icon: `${ICON_BASE_URL}flags/sg.svg`,
-      filter: "(?i)\\b(新加坡|坡|狮城|SG|Singapore)\\b",
-    },
-    香港节点: {
-      icon: `${ICON_BASE_URL}flags/hk.svg`,
-      filter: "(?i)\\b(港|HK|hk|Hong Kong|HongKong|hongkong)\\b",
-    },
-    台湾节点: {
-      icon: `${ICON_BASE_URL}flags/tw.svg`,
-      filter: "(?i)\\b(台|新北|彰化|TW|Taiwan)\\b",
-    },
-    加拿大节点: {
-      icon: `${ICON_BASE_URL}flags/ca.svg`,
-      filter: "(?i)\\b(CA|Canada|加拿大|多伦多|温哥华)\\b",
-    },
-    德国节点: {
-      icon: `${ICON_BASE_URL}flags/de.svg`,
-      filter: "(?i)\\b(DE|Germany|德国|法兰克福)\\b",
-    },
-    法国节点: {
-      icon: `${ICON_BASE_URL}flags/fr.svg`,
-      filter: "(?i)\\b(FR|France|法国|巴黎)\\b",
-    },
-    俄罗斯节点: {
-      icon: `${ICON_BASE_URL}flags/ru.svg`,
-      filter: "(?i)\\b(RU|Russia|俄罗斯|莫斯科)\\b",
-    },
-    韩国节点: {
-      icon: `${ICON_BASE_URL}flags/kr.svg`,
-      filter: "(?i)\\b(KR|Korea|韩国|首尔)\\b",
-    },
-    联合国节点: {
-      icon: `${ICON_BASE_URL}flags/un.svg`,
-      filter: "(?i)\\b(UN|United Nations|联合国)\\b",
-    },
-    英国节点: {
-      icon: `${ICON_BASE_URL}flags/gb.svg`,
-      filter: "(?i)\\b(UK|GB|United Kingdom|英国|伦敦|Britain)\\b",
-    },
-    印度节点: {
-      icon: `${ICON_BASE_URL}flags/in.svg`,
-      filter: "(?i)\\b(IND|India|印度|孟买)\\b",
-    },
-    荷兰节点: {
-      icon: `${ICON_BASE_URL}flags/nl.svg`,
-      filter: "(?i)\\b(NL|Netherlands|荷兰|阿姆斯特丹)\\b",
-    },
-    越南节点: {
-      icon: `${ICON_BASE_URL}flags/vn.svg`,
-      filter: "(?i)\\b(VN|Vietnam|越南)\\b",
-    },
-    伊朗节点: {
-      icon: `${ICON_BASE_URL}flags/ir.svg`,
-      filter: "(?i)\\b(IR|Iran|伊朗|德黑兰)\\b",
-    },
-    中国节点: {
-      icon: `${ICON_BASE_URL}flags/cn.svg`,
-      filter: "(?i)\\b(中国|沪|京|浙|苏|CN|China)\\b",
-    },
-  },
-  ruleProviders: {
-    LocalAreaNetwork: {
-      type: "http",
-      behavior: "classical",
-      url: `${RULESET_BASE_URL}LocalAreaNetwork.list`,
-      path: "./ruleset/LocalAreaNetwork.list",
-      interval: 86400,
-    },
-    UnBan: {
-      type: "http",
-      behavior: "classical",
-      url: `${RULESET_BASE_URL}UnBan.list`,
-      path: "./ruleset/UnBan.list",
-      interval: 86400,
-    },
-    BanAD: {
-      type: "http",
-      behavior: "classical",
-      url: `${RULESET_BASE_URL}BanAD.list`,
-      path: "./ruleset/BanAD.list",
-      interval: 86400,
-    },
-    BanProgramAD: {
-      type: "http",
-      behavior: "classical",
-      url: `${RULESET_BASE_URL}BanProgramAD.list`,
-      path: "./ruleset/BanProgramAD.list",
-      interval: 86400,
-    },
-    ProxyGFWlist: {
-      type: "http",
-      behavior: "classical",
-      url: `${RULESET_BASE_URL}ProxyGFWlist.list`,
-      path: "./ruleset/ProxyGFWlist.list",
-      interval: 86400,
-    },
-    ChinaDomain: {
-      type: "http",
-      behavior: "domain",
-      url: `${RULESET_BASE_URL}ChinaDomain.list`,
-      path: "./ruleset/ChinaDomain.list",
-      interval: 86400,
-    },
-    ChinaCompanyIp: {
-      type: "http",
-      behavior: "ipcidr",
-      url: `${RULESET_BASE_URL}ChinaCompanyIp.list`,
-      path: "./ruleset/ChinaCompanyIp.list",
-      interval: 86400,
-    },
-    Download: {
-      type: "http",
-      behavior: "classical",
-      url: `${RULESET_BASE_URL}Download.list`,
-      path: "./ruleset/Download.list",
-      interval: 86400,
-    },
-  },
-};
+  };
 
   // =================================================================
   // 2. 辅助函数
   // =================================================================
 
   /**
-   * 分析并筛选出可用的地区分组及其代理
+   * 【最终优化】基于内聚配置进行优先级分类
    * @param {Array} allProxies - 所有代理节点
-   * @param {Object} regionFilters - 地区筛选器配置
-   * @returns {Object} 包含可用地区列表、是否存在“其他”节点、以及编译后的筛选器
+   * @param {Object} regionFilters - 内聚的地区筛选器配置
+   * @returns {Object} 包含已分类的代理和未分类的“其他”代理
    */
-  function analyzeAvailableRegions(allProxies, regionFilters) {
-    const compiledFilters = {};
-    const availableRegions = [];
+  function categorizeProxiesByRegion(allProxies, regionFilters) {
+    const regionProxies = {};
+    let remainingProxies = [...allProxies];
 
-    // 预编译所有正则表达式，避免在循环中重复创建，提升性能
-    for (const [name, config] of Object.entries(regionFilters)) {
-      // 移除 Clash 特有的 (?i) 标志，并使用 JS 的 'i' 标志
-      const pattern = config.filter.replace(/^\(\?i\)/, "");
-      compiledFilters[name] = { ...config, regex: new RegExp(pattern, "i") };
-    }
+    // 【核心逻辑】: 将配置条目按 priority 升序排列，确保高优先级先匹配
+    const sortedRegionEntries = Object.entries(regionFilters).sort(
+      (a, b) => a[1].priority - b[1].priority
+    );
 
-    // 筛选出包含节点的地区
-    for (const [regionName, regionData] of Object.entries(compiledFilters)) {
-      const hasMatchingProxy = allProxies.some((proxy) =>
-        regionData.regex.test(proxy.name)
+    for (const [regionName, regionConfig] of sortedRegionEntries) {
+      const pattern = regionConfig.filter.replace(/^\(\?i\)/, "");
+      const regex = new RegExp(pattern, "i");
+
+      const matchedProxies = remainingProxies.filter((proxy) =>
+        regex.test(proxy.name)
       );
-      if (hasMatchingProxy) {
-        availableRegions.push(regionName);
+
+      if (matchedProxies.length > 0) {
+        regionProxies[regionName] = {
+          proxies: matchedProxies,
+          icon: regionConfig.icon, // 直接从配置中获取图标，保证一一对应
+        };
+        remainingProxies = remainingProxies.filter(
+          (proxy) => !matchedProxies.includes(proxy)
+        );
       }
     }
 
-    // 检查是否存在未被任何规则匹配的“其他”节点
-    const hasOtherNodes = allProxies.some((proxy) => {
-      return !Object.values(compiledFilters).some((regionData) =>
-        regionData.regex.test(proxy.name)
-      );
-    });
-
-    return { availableRegions, hasOtherNodes, compiledFilters };
+    return {
+      regionProxies,
+      otherProxies: remainingProxies,
+    };
   }
 
   /**
    * 构建代理选择器列表
-   * @param {Array} regions - 可用地区列表
+   * @param {Object} regionProxies - 已分类的代理对象
    * @param {boolean} includeOther - 是否包含“其他节点”
    * @param {Array} additional - 额外添加的代理
    * @returns {Array} 代理选择器列表
    */
-  function buildProxyList(regions, includeOther, additional = []) {
-    const list = [...regions];
+  function buildProxyList(regionProxies, includeOther, additional = []) {
+    const list = Object.keys(regionProxies);
     if (includeOther) {
       list.push("其他节点");
     }
@@ -201,11 +225,18 @@ const settings = {
   // 3. 主逻辑
   // =================================================================
   const allProxies = config.proxies || [];
-  const { availableRegions, hasOtherNodes, compiledFilters } =
-    analyzeAvailableRegions(allProxies, settings.regionFilters);
+
+  // 调用优化后的分类函数，不再需要外部的 priority 列表
+  const { regionProxies, otherProxies } = categorizeProxiesByRegion(
+    allProxies,
+    settings.regionFilters
+  );
+
+  const availableRegions = Object.keys(regionProxies);
+  const hasOtherNodes = otherProxies.length > 0;
+  const commonFallbackProxies = ["自动选择", "手动切换", "DIRECT"];
 
   const proxyGroups = [];
-  const commonFallbackProxies = ["自动选择", "手动切换", "DIRECT"];
 
   // --- 代理组定义 ---
 
@@ -215,7 +246,7 @@ const settings = {
     icon: `${ICON_BASE_URL}adjust.svg`,
     type: "select",
     proxies: buildProxyList(
-      availableRegions,
+      regionProxies,
       hasOtherNodes,
       commonFallbackProxies
     ),
@@ -223,13 +254,14 @@ const settings = {
 
   // 按可用地区创建分组
   for (const regionName of availableRegions) {
-    const regionConfig = settings.regionFilters[regionName];
+    // 【关键修复】: 直接从我们自己的分类结果中获取所有需要的信息
+    // 这确保了名称、图标、节点列表三者之间绝对的正确对应关系
+    const groupData = regionProxies[regionName];
     proxyGroups.push({
       name: regionName,
-      icon: regionConfig.icon,
+      icon: groupData.icon,
       type: "url-test",
-      "include-all": true,
-      filter: regionConfig.filter, // 交由 Clash 进行原生过滤，效率更高
+      proxies: groupData.proxies.map((proxy) => proxy.name),
       interval: 300,
       tolerance: 50,
     });
@@ -237,17 +269,11 @@ const settings = {
 
   // 其他节点
   if (hasOtherNodes) {
-    // 优化：生成一个更健壮的 exclude-filter
-    const excludeFilterKeywords = Object.values(settings.regionFilters)
-      .map((r) => r.filter.replace(/^\(\?i\)/, ""))
-      .join("|");
-
     proxyGroups.push({
       name: "其他节点",
-      icon: `https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png`, // 假设此路径，或使用其他图标
+      icon: `https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png`,
       type: "url-test",
-      "include-all": true,
-      "exclude-filter": `(?i)${excludeFilterKeywords}`,
+      proxies: otherProxies.map((proxy) => proxy.name),
       interval: 300,
       tolerance: 50,
     });
@@ -293,7 +319,7 @@ const settings = {
     icon: `${ICON_BASE_URL}fish.svg`,
     type: "select",
     proxies: buildProxyList(
-      availableRegions,
+      regionProxies,
       hasOtherNodes,
       commonFallbackProxies
     ),
@@ -301,15 +327,29 @@ const settings = {
 
   // GLOBAL
   const globalProxies = buildProxyList(
-    ["节点选择", "自动选择", "手动切换", ...availableRegions],
+    { 节点选择: {}, 自动选择: {}, 手动切换: {}, ...regionProxies }, // 伪对象以复用函数
     hasOtherNodes,
     ["广告拦截", "应用净化", "漏网之鱼"]
-  );
+  ).filter(
+    (name) =>
+      !["节点选择", "自动选择", "手动切换"].includes(name) ||
+      name === "节点选择"
+  ); // 简单去重和排序
+
   proxyGroups.push({
     name: "GLOBAL",
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png",
     type: "select",
-    proxies: globalProxies,
+    proxies: [
+      "节点选择",
+      "自动选择",
+      "手动切换",
+      ...availableRegions,
+      ...(hasOtherNodes ? ["其他节点"] : []),
+      "广告拦截",
+      "应用净化",
+      "漏网之鱼",
+    ],
   });
 
   // =================================================================
