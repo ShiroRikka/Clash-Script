@@ -1,4 +1,4 @@
-// 来自https://linux.do/t/topic/1010793
+// 自用
 function main(config) {
   // 获取所有代理节点
   const allProxies = config.proxies || [];
@@ -28,16 +28,36 @@ function main(config) {
     },
   };
 
-  // 检测每个地区是否有节点
+  // 辅助函数：用于构建代理组的选择器列表
+  function buildProxyList({ regions, hasOther, additional = [] }) {
+    const list = [...regions];
+    if (hasOther) {
+      list.push("其他节点");
+    }
+    list.push(...additional);
+    return list;
+  }
+
+  // 预编译正则表达式，提高效率
+  const compiledRegionFilters = {};
+  for (const [regionName, regionConfig] of Object.entries(regionFilters)) {
+    const pattern = regionConfig.filter.replace(/\(\?i\)/g, "");
+    compiledRegionFilters[regionName] = {
+      ...regionConfig,
+      regex: new RegExp(pattern, "i"),
+    };
+  }
+
+  // 检测每个地区是否有节点，并收集匹配的节点
   const availableRegions = [];
   const regionProxies = {};
 
-  for (const [regionName, regionConfig] of Object.entries(regionFilters)) {
-    // 移除(?i)标志，用'i' flag代替
-    const pattern = regionConfig.filter.replace(/\(\?i\)/g, "");
-    const regex = new RegExp(pattern, "i");
-    const matchedProxies = allProxies.filter((proxy) => regex.test(proxy.name));
-
+  for (const [regionName, regionData] of Object.entries(
+    compiledRegionFilters
+  )) {
+    const matchedProxies = allProxies.filter((proxy) =>
+      regionData.regex.test(proxy.name)
+    );
     if (matchedProxies.length > 0) {
       availableRegions.push(regionName);
       regionProxies[regionName] = matchedProxies;
@@ -59,26 +79,27 @@ function main(config) {
   // 构建代理组列表
   const proxyGroups = [];
 
-  // 构建"节点选择"的代理列表
-  const nodeSelectionProxies = [];
-  availableRegions.forEach((region) => nodeSelectionProxies.push(region));
-  if (hasOtherNodes) nodeSelectionProxies.push("其他节点");
-  nodeSelectionProxies.push("自动选择", "手动切换", "DIRECT");
+  // 通用后备代理列表
+  const commonFallbackProxies = ["自动选择", "手动切换", "DIRECT"];
 
   // 节点选择
   proxyGroups.push({
     name: "节点选择",
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png",
     type: "select",
-    proxies: nodeSelectionProxies,
+    proxies: buildProxyList({
+      regions: availableRegions,
+      hasOther: hasOtherNodes,
+      additional: commonFallbackProxies,
+    }),
   });
 
   // 自动选择（自动选择延迟最低的节点）
   proxyGroups.push({
     name: "自动选择",
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png",
-    "include-all": true,
     type: "url-test",
+    "include-all": true,
     interval: 300,
     tolerance: 50,
   });
@@ -87,23 +108,22 @@ function main(config) {
   proxyGroups.push({
     name: "手动切换",
     icon: "https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png",
-    "include-all": true,
     type: "select",
+    "include-all": true,
   });
 
   // 添加有节点的地区分组
-  for (const [regionName, regionConfig] of Object.entries(regionFilters)) {
-    if (availableRegions.includes(regionName)) {
-      proxyGroups.push({
-        name: regionName,
-        icon: regionConfig.icon,
-        "include-all": true,
-        filter: regionConfig.filter,
-        type: "url-test",
-        interval: 300,
-        tolerance: 50,
-      });
-    }
+  for (const regionName of availableRegions) {
+    const regionConfig = regionFilters[regionName];
+    proxyGroups.push({
+      name: regionName,
+      icon: regionConfig.icon,
+      type: "url-test",
+      "include-all": true,
+      filter: regionConfig.filter,
+      interval: 300,
+      tolerance: 50,
+    });
   }
 
   // 如果有其他节点，添加"其他节点"分组
@@ -111,9 +131,9 @@ function main(config) {
     proxyGroups.push({
       name: "其他节点",
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png",
+      type: "url-test",
       "include-all": true,
       "exclude-filter": excludePattern,
-      type: "url-test",
       interval: 300,
       tolerance: 50,
     });
@@ -135,32 +155,35 @@ function main(config) {
     proxies: ["REJECT", "DIRECT"],
   });
 
-  // 构建"漏网之鱼"的代理列表
-  const finalProxies = ["节点选择"];
-  availableRegions.forEach((region) => finalProxies.push(region));
-  if (hasOtherNodes) finalProxies.push("其他节点");
-  finalProxies.push("自动选择", "手动切换", "DIRECT");
-
   // 漏网之鱼
   proxyGroups.push({
     name: "漏网之鱼",
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png",
     type: "select",
-    proxies: finalProxies,
+    proxies: buildProxyList({
+      regions: availableRegions,
+      hasOther: hasOtherNodes,
+      additional: commonFallbackProxies,
+    }),
   });
 
-  // 构建 GLOBAL 的代理列表
-  const globalProxies = ["节点选择", "自动选择", "手动切换"];
-  availableRegions.forEach((region) => globalProxies.push(region));
-  if (hasOtherNodes) globalProxies.push("其他节点");
+  // GLOBAL
+  const globalProxies = [
+    "节点选择",
+    "自动选择",
+    "手动切换",
+    ...availableRegions,
+  ];
+  if (hasOtherNodes) {
+    globalProxies.push("其他节点");
+  }
   globalProxies.push("广告拦截", "应用净化", "漏网之鱼");
 
-  // GLOBAL
   proxyGroups.push({
     name: "GLOBAL",
     icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png",
-    "include-all": true,
     type: "select",
+    "include-all": true,
     proxies: globalProxies,
   });
 
@@ -168,82 +191,93 @@ function main(config) {
 
   // 规则提供者配置
   config["rule-providers"] = {
+    // 局域网 IP
     LocalAreaNetwork: {
+      type: "http",
+      behavior: "classical",
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/LocalAreaNetwork.list",
       path: "./ruleset/LocalAreaNetwork.list",
-      behavior: "classical",
       interval: 86400,
-      format: "text",
-      type: "http",
     },
+    // 白名单（防止误杀）
     UnBan: {
+      type: "http",
+      behavior: "classical",
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/UnBan.list",
       path: "./ruleset/UnBan.list",
-      behavior: "classical",
       interval: 86400,
-      format: "text",
-      type: "http",
     },
+    // 广告拦截
     BanAD: {
+      type: "http",
+      behavior: "classical",
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanAD.list",
       path: "./ruleset/BanAD.list",
-      behavior: "classical",
       interval: 86400,
-      format: "text",
-      type: "http",
     },
+    // 应用程序广告拦截
     BanProgramAD: {
+      type: "http",
+      behavior: "classical",
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanProgramAD.list",
       path: "./ruleset/BanProgramAD.list",
-      behavior: "classical",
       interval: 86400,
-      format: "text",
-      type: "http",
     },
+    // 代理列表（常用网站）
     ProxyGFWlist: {
+      type: "http",
+      behavior: "classical",
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyGFWlist.list",
       path: "./ruleset/ProxyGFWlist.list",
-      behavior: "classical",
       interval: 86400,
-      format: "text",
-      type: "http",
     },
+    // 中国大陆域名
     ChinaDomain: {
+      type: "http",
+      behavior: "domain",
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaDomain.list",
       path: "./ruleset/ChinaDomain.list",
-      behavior: "domain",
       interval: 86400,
-      format: "text",
-      type: "http",
     },
+    // 中国大陆 IP
     ChinaCompanyIp: {
+      type: "http",
+      behavior: "ipcidr",
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaCompanyIp.list",
       path: "./ruleset/ChinaCompanyIp.list",
-      behavior: "ipcidr",
       interval: 86400,
-      format: "text",
-      type: "http",
     },
+    // 下载（BT、PT 等）
     Download: {
+      type: "http",
+      behavior: "classical",
       url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Download.list",
       path: "./ruleset/Download.list",
-      behavior: "classical",
       interval: 86400,
-      format: "text",
-      type: "http",
     },
   };
 
+  // 规则集
   config["rules"] = [
+    // 局域网直连
     "RULE-SET,LocalAreaNetwork,DIRECT",
+    // 白名单列表直连
     "RULE-SET,UnBan,DIRECT",
+    // 广告拦截
     "RULE-SET,BanAD,广告拦截",
+    // 应用程序广告拦截
     "RULE-SET,BanProgramAD,应用净化",
+    // 代理列表
     "RULE-SET,ProxyGFWlist,节点选择",
+    // 中国大陆域名直连
     "RULE-SET,ChinaDomain,DIRECT",
+    // 中国大陆 IP 直连
     "RULE-SET,ChinaCompanyIp,DIRECT",
+    // 下载工具直连
     "RULE-SET,Download,DIRECT",
+    // 中国大陆 IP 直连
     "GEOIP,CN,DIRECT",
+    // 最终规则（所有其它请求）
     "MATCH,漏网之鱼",
   ];
 
