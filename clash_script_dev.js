@@ -9,77 +9,77 @@ function main(config) {
     "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/";
 
   // 核心配置对象
-  const settings = {
-    regionFilters: {
-      美国节点: {
-        icon: `${ICON_BASE_URL}flags/us.svg`,
-        filter: "(?i)美|硅谷|拉斯维加斯|西雅图|芝加哥|US|United States",
-      },
-      日本节点: {
-        icon: `${ICON_BASE_URL}flags/jp.svg`,
-        filter: "(?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan",
-      },
-      新加坡节点: {
-        icon: `${ICON_BASE_URL}flags/sg.svg`,
-        filter: "(?i)新加坡|坡|狮城|SG|Singapore",
-      },
-      香港节点: {
-        icon: `${ICON_BASE_URL}flags/hk.svg`,
-        filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong",
-      },
-      台湾节点: {
-        icon: `${ICON_BASE_URL}flags/tw.svg`,
-        filter: "(?i)台|新北|彰化|TW|Taiwan",
-      },
-      中国节点: {
-        icon: `${ICON_BASE_URL}flags/cn.svg`,
-        filter: "(?i)中国|沪|京|浙|苏|CN|China",
-      },
-      加拿大节点: {
-        icon: `${ICON_BASE_URL}flags/ca.svg`,
-        filter: "(?i)CA|Canada|加拿大|多伦多|温哥华",
-      },
-      德国节点: {
-        icon: `${ICON_BASE_URL}flags/de.svg`,
-        filter: "(?i)DE|Germany|德国|法兰克福",
-      },
-      法国节点: {
-        icon: `${ICON_BASE_URL}flags/fr.svg`,
-        filter: "(?i)FR|France|法国|巴黎",
-      },
-      俄罗斯节点: {
-        icon: `${ICON_BASE_URL}flags/ru.svg`,
-        filter: "(?i)RU|Russia|俄罗斯|莫斯科",
-      },
-      韩国节点: {
-        icon: `${ICON_BASE_URL}flags/kr.svg`,
-        filter: "(?i)KR|Korea|韩国|首尔",
-      },
-      联合国节点: {
-        icon: `${ICON_BASE_URL}flags/un.svg`,
-        filter: "(?i)UN|United Nations|联合国",
-      },
-      英国节点: {
-        icon: `${ICON_BASE_URL}flags/gb.svg`,
-        filter: "(?i)UK|GB|United Kingdom|英国|伦敦|Britain",
-      },
-      印度节点: {
-        icon: `${ICON_BASE_URL}flags/in.svg`,
-        filter: "(?i)IND|India|印度|孟买",
-      },
-      荷兰节点: {
-        icon: `${ICON_BASE_URL}flags/nl.svg`,
-        filter: "(?i)NL|Netherlands|荷兰|阿姆斯特丹",
-      },
-      越南节点: {
-        icon: `${ICON_BASE_URL}flags/vn.svg`,
-        filter: "(?i)VN|Vietnam|越南",
-      },
-      伊朗节点: {
-        icon: `${ICON_BASE_URL}flags/ir.svg`,
-        filter: "(?i)IR|Iran|伊朗|德黑兰",
-      },
+const settings = {
+  regionFilters: {
+    美国节点: {
+      icon: `${ICON_BASE_URL}flags/us.svg`,
+      filter: "(?i)\\b(美|硅谷|拉斯维加斯|西雅图|芝加哥|US|United States)\\b",
     },
+    日本节点: {
+      icon: `${ICON_BASE_URL}flags/jp.svg`,
+      filter: "(?i)\\b(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan)\\b",
+    },
+    新加坡节点: {
+      icon: `${ICON_BASE_URL}flags/sg.svg`,
+      filter: "(?i)\\b(新加坡|坡|狮城|SG|Singapore)\\b",
+    },
+    香港节点: {
+      icon: `${ICON_BASE_URL}flags/hk.svg`,
+      filter: "(?i)\\b(港|HK|hk|Hong Kong|HongKong|hongkong)\\b",
+    },
+    台湾节点: {
+      icon: `${ICON_BASE_URL}flags/tw.svg`,
+      filter: "(?i)\\b(台|新北|彰化|TW|Taiwan)\\b",
+    },
+    中国节点: {
+      icon: `${ICON_BASE_URL}flags/cn.svg`,
+      filter: "(?i)\\b(中国|沪|京|浙|苏|CN|China)\\b",
+    },
+    加拿大节点: {
+      icon: `${ICON_BASE_URL}flags/ca.svg`,
+      filter: "(?i)\\b(CA|Canada|加拿大|多伦多|温哥华)\\b",
+    },
+    德国节点: {
+      icon: `${ICON_BASE_URL}flags/de.svg`,
+      filter: "(?i)\\b(DE|Germany|德国|法兰克福)\\b",
+    },
+    法国节点: {
+      icon: `${ICON_BASE_URL}flags/fr.svg`,
+      filter: "(?i)\\b(FR|France|法国|巴黎)\\b",
+    },
+    俄罗斯节点: {
+      icon: `${ICON_BASE_URL}flags/ru.svg`,
+      filter: "(?i)\\b(RU|Russia|俄罗斯|莫斯科)\\b",
+    },
+    韩国节点: {
+      icon: `${ICON_BASE_URL}flags/kr.svg`,
+      filter: "(?i)\\b(KR|Korea|韩国|首尔)\\b",
+    },
+    联合国节点: {
+      icon: `${ICON_BASE_URL}flags/un.svg`,
+      filter: "(?i)\\b(UN|United Nations|联合国)\\b",
+    },
+    英国节点: {
+      icon: `${ICON_BASE_URL}flags/gb.svg`,
+      filter: "(?i)\\b(UK|GB|United Kingdom|英国|伦敦|Britain)\\b",
+    },
+    印度节点: {
+      icon: `${ICON_BASE_URL}flags/in.svg`,
+      filter: "(?i)\\b(IND|India|印度|孟买)\\b",
+    },
+    荷兰节点: {
+      icon: `${ICON_BASE_URL}flags/nl.svg`,
+      filter: "(?i)\\b(NL|Netherlands|荷兰|阿姆斯特丹)\\b",
+    },
+    越南节点: {
+      icon: `${ICON_BASE_URL}flags/vn.svg`,
+      filter: "(?i)\\b(VN|Vietnam|越南)\\b",
+    },
+    伊朗节点: {
+      icon: `${ICON_BASE_URL}flags/ir.svg`,
+      filter: "(?i)\\b(IR|Iran|伊朗|德黑兰)\\b",
+    },
+  },
     ruleProviders: {
       LocalAreaNetwork: {
         type: "http",
