@@ -5,31 +5,55 @@ function main(config) {
 
     // 定义地区过滤规则
     const regionFilters = {
-        美国节点: {
-            icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png",
-            filter:
-                "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States",
-        },
-        日本节点: {
-            icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png",
-            filter: "(?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan",
-        },
-        狮城节点: {
-            icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png",
-            filter: "(?i)新加坡|坡|狮城|SG|Singapore",
-        },
-        香港节点: {
-            icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png",
-            filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong",
-        },
-        台湾节点: {
-            icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png",
-            filter: "(?i)台|新北|彰化|TW|Taiwan",
-        },
-        中国节点: {
-            icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/China.png",
-            filter: "(?i)中国|沪|京|浙|苏|粤|川|渝|CN|China|上海|北京|广州|深圳|杭州|成都|重庆|南京|武汉|天津|西安|苏州",
-        },
+      美国节点: {
+        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png",
+        filter:
+          "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States",
+      },
+      日本节点: {
+        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png",
+        filter: "(?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan",
+      },
+      新加坡节点: {
+        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png",
+        filter: "(?i)新加坡|坡|狮城|SG|Singapore",
+      },
+      香港节点: {
+        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png",
+        filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong",
+      },
+      台湾节点: {
+        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png",
+        filter: "(?i)台|新北|彰化|TW|Taiwan",
+      },
+      中国节点: {
+        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/China.png",
+        filter: "(?i)中国|沪|京|浙|苏|粤|川|渝|CN|China|上海|北京|广州|深圳|杭州|成都|重庆|南京|武汉|天津|西安|苏州",
+      },
+      加拿大节点: {
+        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Canada.png",
+        filter: "(?i)CA|Canada|加拿大|多伦多|温哥华",
+      },
+      德国节点: {
+        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Germany.png",
+        filter: "(?i)DE|Germany|德国|法兰克福",
+      },
+      法国节点: {
+        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/France.png",
+        filter: "(?i)FR|France|法国|巴黎",
+      },
+      俄罗斯节点: {
+        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Russia.png",
+        filter: "(?i)RU|Russia|俄罗斯|莫斯科",
+      },
+      韩国节点: {
+        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png",
+        filter: "(?i)KR|Korea|韩国|首尔",
+      },
+      联合国节点: {
+        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_Nations.png",
+        filter: "(?i)UN|United Nations|联合国",
+      },
     };
 
     // 辅助函数：用于构建代理组的选择器列表
