@@ -221,24 +221,6 @@ function main(config) {
     ),
   });
 
-  // 自动选择
-  proxyGroups.push({
-    name: "自动选择",
-    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png",
-    type: "url-test",
-    "include-all": true,
-    interval: 300,
-    tolerance: 50,
-  });
-
-  // 手动切换
-  proxyGroups.push({
-    name: "手动切换",
-    icon: "https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png",
-    type: "select",
-    "include-all": true,
-  });
-
   // 按可用地区创建分组
   for (const regionName of availableRegions) {
     const regionConfig = settings.regionFilters[regionName];
@@ -262,7 +244,7 @@ function main(config) {
 
     proxyGroups.push({
       name: "其他节点",
-      icon: `${ICON_BASE_URL}Color/Global.png`, // 假设此路径，或使用其他图标
+      icon: `https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png`, // 假设此路径，或使用其他图标
       type: "url-test",
       "include-all": true,
       "exclude-filter": `(?i)${excludeFilterKeywords}`,
@@ -270,6 +252,24 @@ function main(config) {
       tolerance: 50,
     });
   }
+
+  // 自动选择
+  proxyGroups.push({
+    name: "自动选择",
+    icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png",
+    type: "url-test",
+    "include-all": true,
+    interval: 300,
+    tolerance: 50,
+  });
+
+  // 手动切换
+  proxyGroups.push({
+    name: "手动切换",
+    icon: "https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png",
+    type: "select",
+    "include-all": true,
+  });
 
   // 广告拦截
   proxyGroups.push({
