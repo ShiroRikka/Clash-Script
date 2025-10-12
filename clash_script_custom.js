@@ -6,61 +6,72 @@ function main(config) {
     // 定义地区过滤规则
     const regionFilters = {
       美国节点: {
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png",
-        filter:
-          "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States",
+        icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/us.svg",
+        filter:"(?i)美|硅谷|拉斯维加斯|西雅图|芝加哥|US|United States",
       },
       日本节点: {
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png",
+        icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/jp.svg",
         filter: "(?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan",
       },
       新加坡节点: {
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png",
+        icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/sg.svg",
         filter: "(?i)新加坡|坡|狮城|SG|Singapore",
       },
       香港节点: {
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png",
+        icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/hk.svg",
         filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong",
       },
       台湾节点: {
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png",
+        icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/tw.svg",
         filter: "(?i)台|新北|彰化|TW|Taiwan",
       },
       中国节点: {
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/China.png",
-        filter:"(?i)中国|沪|京|浙|苏|CN|China|上海|北京|广州|深圳|杭州|成都|重庆",
+        icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/cn.svg",
+        filter:"(?i)中国|沪|京|浙|苏|CN|China",
       },
       加拿大节点: {
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Canada.png",
+        icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/ca.svg",
         filter: "(?i)CA|Canada|加拿大|多伦多|温哥华",
       },
       德国节点: {
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Germany.png",
+        icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/de.svg",
         filter: "(?i)DE|Germany|德国|法兰克福",
       },
       法国节点: {
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/France.png",
+        icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/fr.svg",
         filter: "(?i)FR|France|法国|巴黎",
       },
       俄罗斯节点: {
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Russia.png",
+        icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/ru.svg",
         filter: "(?i)RU|Russia|俄罗斯|莫斯科",
       },
       韩国节点: {
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png",
+        icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/kr.svg",
         filter: "(?i)KR|Korea|韩国|首尔",
       },
       联合国节点: {
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_Nations.png",
+        icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/un.svg",
         filter: "(?i)UN|United Nations|联合国",
       },
       英国节点: {
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_Kingdom.png",
+        icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/uk.svg",
         filter: "(?i)UK|United Kingdom|英国|伦敦|Britain",
       },
       印度节点: {
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/India.png",
+        icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/in.svg",
         filter: "(?i)IND|India|印度|孟买",
+      },
+      荷兰节点: {
+        icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/nl.svg",
+        filter: "(?i)NL|Netherlands|荷兰|阿姆斯特丹",
+      },
+      越南节点: {
+        icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/vn.svg",
+        filter: "(?i)VN|Vietnam|越南",
+      },
+      伊朗节点: {
+        icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/ir.svg",
+        filter: "(?i)IR|Iran|伊朗|德黑兰",
       },
     };
 
