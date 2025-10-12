@@ -1,3 +1,4 @@
+
 function main(config) {
   config["proxy-groups"] = [
     {
