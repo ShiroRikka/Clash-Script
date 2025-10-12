@@ -31,10 +31,6 @@ const settings = {
       icon: `${ICON_BASE_URL}flags/tw.svg`,
       filter: "(?i)\\b(台|新北|彰化|TW|Taiwan)\\b",
     },
-    中国节点: {
-      icon: `${ICON_BASE_URL}flags/cn.svg`,
-      filter: "(?i)\\b(中国|沪|京|浙|苏|CN|China)\\b",
-    },
     加拿大节点: {
       icon: `${ICON_BASE_URL}flags/ca.svg`,
       filter: "(?i)\\b(CA|Canada|加拿大|多伦多|温哥华)\\b",
@@ -79,66 +75,70 @@ const settings = {
       icon: `${ICON_BASE_URL}flags/ir.svg`,
       filter: "(?i)\\b(IR|Iran|伊朗|德黑兰)\\b",
     },
-  },
-    ruleProviders: {
-      LocalAreaNetwork: {
-        type: "http",
-        behavior: "classical",
-        url: `${RULESET_BASE_URL}LocalAreaNetwork.list`,
-        path: "./ruleset/LocalAreaNetwork.list",
-        interval: 86400,
-      },
-      UnBan: {
-        type: "http",
-        behavior: "classical",
-        url: `${RULESET_BASE_URL}UnBan.list`,
-        path: "./ruleset/UnBan.list",
-        interval: 86400,
-      },
-      BanAD: {
-        type: "http",
-        behavior: "classical",
-        url: `${RULESET_BASE_URL}BanAD.list`,
-        path: "./ruleset/BanAD.list",
-        interval: 86400,
-      },
-      BanProgramAD: {
-        type: "http",
-        behavior: "classical",
-        url: `${RULESET_BASE_URL}BanProgramAD.list`,
-        path: "./ruleset/BanProgramAD.list",
-        interval: 86400,
-      },
-      ProxyGFWlist: {
-        type: "http",
-        behavior: "classical",
-        url: `${RULESET_BASE_URL}ProxyGFWlist.list`,
-        path: "./ruleset/ProxyGFWlist.list",
-        interval: 86400,
-      },
-      ChinaDomain: {
-        type: "http",
-        behavior: "domain",
-        url: `${RULESET_BASE_URL}ChinaDomain.list`,
-        path: "./ruleset/ChinaDomain.list",
-        interval: 86400,
-      },
-      ChinaCompanyIp: {
-        type: "http",
-        behavior: "ipcidr",
-        url: `${RULESET_BASE_URL}ChinaCompanyIp.list`,
-        path: "./ruleset/ChinaCompanyIp.list",
-        interval: 86400,
-      },
-      Download: {
-        type: "http",
-        behavior: "classical",
-        url: `${RULESET_BASE_URL}Download.list`,
-        path: "./ruleset/Download.list",
-        interval: 86400,
-      },
+    中国节点: {
+      icon: `${ICON_BASE_URL}flags/cn.svg`,
+      filter: "(?i)\\b(中国|沪|京|浙|苏|CN|China)\\b",
     },
-  };
+  },
+  ruleProviders: {
+    LocalAreaNetwork: {
+      type: "http",
+      behavior: "classical",
+      url: `${RULESET_BASE_URL}LocalAreaNetwork.list`,
+      path: "./ruleset/LocalAreaNetwork.list",
+      interval: 86400,
+    },
+    UnBan: {
+      type: "http",
+      behavior: "classical",
+      url: `${RULESET_BASE_URL}UnBan.list`,
+      path: "./ruleset/UnBan.list",
+      interval: 86400,
+    },
+    BanAD: {
+      type: "http",
+      behavior: "classical",
+      url: `${RULESET_BASE_URL}BanAD.list`,
+      path: "./ruleset/BanAD.list",
+      interval: 86400,
+    },
+    BanProgramAD: {
+      type: "http",
+      behavior: "classical",
+      url: `${RULESET_BASE_URL}BanProgramAD.list`,
+      path: "./ruleset/BanProgramAD.list",
+      interval: 86400,
+    },
+    ProxyGFWlist: {
+      type: "http",
+      behavior: "classical",
+      url: `${RULESET_BASE_URL}ProxyGFWlist.list`,
+      path: "./ruleset/ProxyGFWlist.list",
+      interval: 86400,
+    },
+    ChinaDomain: {
+      type: "http",
+      behavior: "domain",
+      url: `${RULESET_BASE_URL}ChinaDomain.list`,
+      path: "./ruleset/ChinaDomain.list",
+      interval: 86400,
+    },
+    ChinaCompanyIp: {
+      type: "http",
+      behavior: "ipcidr",
+      url: `${RULESET_BASE_URL}ChinaCompanyIp.list`,
+      path: "./ruleset/ChinaCompanyIp.list",
+      interval: 86400,
+    },
+    Download: {
+      type: "http",
+      behavior: "classical",
+      url: `${RULESET_BASE_URL}Download.list`,
+      path: "./ruleset/Download.list",
+      interval: 86400,
+    },
+  },
+};
 
   // =================================================================
   // 2. 辅助函数
