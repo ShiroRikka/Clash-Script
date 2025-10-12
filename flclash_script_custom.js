@@ -28,8 +28,7 @@ function main(config) {
       },
       中国节点: {
         icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/China.png",
-        filter:
-          "(?i)中国|沪|京|浙|苏|粤|川|渝|CN|China|上海|北京|广州|深圳|杭州|成都|重庆|南京|武汉|天津|西安|苏州",
+        filter:"(?i)中国|沪|京|浙|苏|CN|China|上海|北京|广州|深圳|杭州|成都|重庆",
       },
       加拿大节点: {
         icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Canada.png",
