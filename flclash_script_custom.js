@@ -28,7 +28,8 @@ function main(config) {
       },
       中国节点: {
         icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/China.png",
-        filter: "(?i)中国|沪|京|浙|苏|粤|川|渝|CN|China|上海|北京|广州|深圳|杭州|成都|重庆|南京|武汉|天津|西安|苏州",
+        filter:
+          "(?i)中国|沪|京|浙|苏|粤|川|渝|CN|China|上海|北京|广州|深圳|杭州|成都|重庆|南京|武汉|天津|西安|苏州",
       },
       加拿大节点: {
         icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Canada.png",
@@ -53,6 +54,14 @@ function main(config) {
       联合国节点: {
         icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_Nations.png",
         filter: "(?i)UN|United Nations|联合国",
+      },
+      英国节点: {
+        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_Kingdom.png",
+        filter: "(?i)UK|United Kingdom|英国|伦敦|Britain",
+      },
+      印度节点: {
+        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/India.png",
+        filter: "(?i)IND|India|印度|孟买",
       },
     };
 
