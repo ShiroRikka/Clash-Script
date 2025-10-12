@@ -54,8 +54,8 @@ function main(config) {
         filter: "(?i)UN|United Nations|联合国",
       },
       英国节点: {
-        icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/uk.svg",
-        filter: "(?i)UK|United Kingdom|英国|伦敦|Britain",
+        icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/gb.svg",
+        filter: "(?i)UK|GB|United Kingdom|英国|伦敦|Britain",
       },
       印度节点: {
         icon: "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/in.svg",
