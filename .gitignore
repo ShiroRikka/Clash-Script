@@ -1,3 +1,6 @@
 *.yaml
 .kilocode
 temp.*
+.idea
+/node_modules/
+/package-lock.json
