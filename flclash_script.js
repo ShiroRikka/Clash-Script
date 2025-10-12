@@ -1,4 +1,4 @@
-
+// 来自https://linux.do/t/topic/995297
 function main(config) {
   config["proxy-groups"] = [
     {
