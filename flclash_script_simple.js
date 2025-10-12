@@ -1,4 +1,4 @@
-// from https://linux.do/t/topic/1010793
+// 来自https://linux.do/t/topic/1010793
 function main(config) {
   // 获取所有代理节点
   const allProxies = config.proxies || [];
