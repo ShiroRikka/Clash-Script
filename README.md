@@ -1,8 +1,9 @@
-# Script.js
 
 ## 描述
 
-该脚本用于配置 Clash Verge，特别是定义规则提供者和规则。它从 [Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules) GitHub 仓库加载规则集，并动态查找主代理组名称。
+该脚本用于配置 Clash，例如Verge和FlClash，特别是定义规则提供者和规则。它从 [Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules) 
+GitHub 
+仓库加载规则集，并动态查找主代理组名称。
 
 ## 功能
 
