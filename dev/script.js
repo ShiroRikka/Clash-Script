@@ -32,13 +32,13 @@ function getIconForGroup(groupName) {
         case "AI 服务":
             return `${cdn}/shindgewongxj/WHATSINStash@master/icon/openai.png`;
         case "YouTube":
-            return "${cdn}/Orz-3/mini@master/Color/YouTube.png";
+            return `${cdn}/Orz-3/mini@master/Color/YouTube.png`;
         case "Spotify":
-            return "${cdn}/shindgewongxj/WHATSINStash@master/icon/spotify.png";
+            return `${cdn}/shindgewongxj/WHATSINStash@master/icon/spotify.png`;
         case "漏网之鱼":
-            return "${cdn}/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg";
+            return `${cdn}/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg`;
         case "广告拦截":
-            return "${cdn}/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/block.svg";
+            return `${cdn}/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/block.svg`;
         default:
             return "";
     }
@@ -72,7 +72,7 @@ function overwriteRules(config) {
         google: {
             type: "http",
             behavior: "domain",
-            url: "${cdn}/Loyalsoldier/clash-rules@release/google.txt",
+            url: `${cdn}/Loyalsoldier/clash-rules@release/google.txt`,
             path: "./ruleset/google.yaml",
             interval: 86400
         },
@@ -80,7 +80,7 @@ function overwriteRules(config) {
         proxy: {
             type: "http",
             behavior: "domain",
-            url: "${cdn}/Loyalsoldier/clash-rules@release/proxy.txt",
+            url: `${cdn}/Loyalsoldier/clash-rules@release/proxy.txt`,
             path: "./ruleset/proxy.yaml",
             interval: 86400
         },
@@ -88,7 +88,7 @@ function overwriteRules(config) {
         direct: {
             type: "http",
             behavior: "domain",
-            url: "${cdn}/Loyalsoldier/clash-rules@release/direct.txt",
+            url: `${cdn}/Loyalsoldier/clash-rules@release/direct.txt`,
             path: "./ruleset/direct.yaml",
             interval: 86400
         },
@@ -96,7 +96,7 @@ function overwriteRules(config) {
         private: {
             type: "http",
             behavior: "domain",
-            url: "${cdn}/Loyalsoldier/clash-rules@release/private.txt",
+            url: `${cdn}/Loyalsoldier/clash-rules@release/private.txt`,
             path: "./ruleset/private.yaml",
             interval: 86400
         },
@@ -104,7 +104,7 @@ function overwriteRules(config) {
         gfw: {
             type: "http",
             behavior: "domain",
-            url: "${cdn}/Loyalsoldier/clash-rules@release/gfw.txt",
+            url: `${cdn}/Loyalsoldier/clash-rules@release/gfw.txt`,
             path: "./ruleset/gfw.yaml",
             interval: 86400
         },
@@ -112,7 +112,7 @@ function overwriteRules(config) {
         telegramcidr: {
             type: "http",
             behavior: "ipcidr",
-            url: "${cdn}/Loyalsoldier/clash-rules@release/telegramcidr.txt",
+            url: `${cdn}/Loyalsoldier/clash-rules@release/telegramcidr.txt`,
             path: "./ruleset/telegramcidr.yaml",
             interval: 86400
         },
@@ -120,7 +120,7 @@ function overwriteRules(config) {
         cncidr: {
             type: "http",
             behavior: "ipcidr",
-            url: "${cdn}/Loyalsoldier/clash-rules@release/cncidr.txt",
+            url: `${cdn}/Loyalsoldier/clash-rules@release/cncidr.txt`,
             path: "./ruleset/cncidr.yaml",
             interval: 86400
         },
@@ -128,7 +128,7 @@ function overwriteRules(config) {
         lancidr: {
             type: "http",
             behavior: "ipcidr",
-            url: "${cdn}/Loyalsoldier/clash-rules@release/lancidr.txt",
+            url: `${cdn}/Loyalsoldier/clash-rules@release/lancidr.txt`,
             path: "./ruleset/lancidr.yaml",
             interval: 86400
         },
@@ -136,7 +136,7 @@ function overwriteRules(config) {
         applications: {
             type: "http",
             behavior: "classical",
-            url: "${cdn}/Loyalsoldier/clash-rules@release/applications.txt",
+            url: `${cdn}/Loyalsoldier/clash-rules@release/applications.txt`,
             path: "./ruleset/applications.yaml",
             interval: 86400
         }
@@ -197,11 +197,11 @@ function overwriteProxyGroups(config) {
 
     const functionalGroups = functionalGroupNames.map(name => ({
         name: name, type: "select", icon: getIconForGroup(name), url: getTestUrlForGroup(name),
-        proxies: [proxyName, "DIRECT", "ALL - 自动选择", ...regionAutoGroups.map(g => g.name), otherAutoGroup ? otherAutoGroup.name : null,].filter(Boolean),
+        proxies: ["Proxy", "DIRECT", "ALL - 自动选择", ...regionAutoGroups.map(g => g.name), otherAutoGroup ? otherAutoGroup.name : null,].filter(Boolean),
     }));
 
     const groups = [
-        {name: proxyName, type: "select", proxies: ["♻️ 自动选择", "手动选择", "DIRECT"]},
+        {name: "Proxy", type: "select", proxies: ["♻️ 自动选择", "手动选择", "DIRECT"]},
         {name: "手动选择", type: "select", proxies: allProxies},
         {
             name: "♻️ 自动选择",
@@ -217,7 +217,7 @@ function overwriteProxyGroups(config) {
             hidden: true
         },
         ...functionalGroups,
-        {name: "漏网之鱼", type: "select", icon: getIconForGroup("漏网之鱼"), proxies: [proxyName, "DIRECT"]},
+        {name: "漏网之鱼", type: "select", icon: getIconForGroup("漏网之鱼"), proxies: ["Proxy", "DIRECT"]},
         {name: "广告拦截", type: "select", icon: getIconForGroup("广告拦截"), proxies: ["REJECT", "DIRECT"]},
         ...regionAutoGroups, ...regionManualGroups,
         otherAutoGroup, otherManualGroup,
