@@ -2,28 +2,29 @@ function main(config) {
     // 获取所有代理节点
     const allProxies = config.proxies || [];
 
-    const cdn = "https://testingcf.jsdelivr.net/gh";
+    const CDN_BASE = "https://testingcf.jsdelivr.net/gh";
+    const FLAGS_CDN = "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/"
 
     // 定义地区过滤规则，直接使用正则表达式以提高性能
     const regionFilters = {
         "美国节点": {
-            icon: `${cdn}/Koolson/Qure@master/IconSet/Color/United_States.png`,
+            icon: `${FLAGS_CDN}/us.svg`,
             filter: /美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States/i
         },
         "日本节点": {
-            icon: `${cdn}/Koolson/Qure@master/IconSet/Color/Japan.png`,
+            icon: `${FLAGS_CDN}/jp.svg`,
             filter: /日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan/i
         },
         "狮城节点": {
-            icon: `${cdn}/Koolson/Qure@master/IconSet/Color/Singapore.png`,
+            icon: `${FLAGS_CDN}/sg.svg`,
             filter: /新加坡|坡|狮城|SG|Singapore/i
         },
         "香港节点": {
-            icon: `${cdn}/Koolson/Qure@master/IconSet/Color/Hong_Kong.png`,
+            icon: `${FLAGS_CDN}/hk.svg`,
             filter: /港|HK|hk|Hong Kong|HongKong|hongkong/i
         },
         "台湾节点": {
-            icon: `${cdn}/Koolson/Qure@master/IconSet/Color/Taiwan.png`,
+            icon: `${FLAGS_CDN}/tw.svg`,
             filter: /台|新北|彰化|TW|Taiwan/i
         }
     };
