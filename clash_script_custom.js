@@ -7,7 +7,8 @@ function main(config) {
   const regionFilters = {
     美国节点: {
       icon: `${FLAGS_CDN}us.svg`,
-      filter: "美|洛杉矶|芝加哥|US|United States",
+      filter:
+        "美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States",
     },
     日本节点: {
       icon: `${FLAGS_CDN}jp.svg`,
@@ -101,6 +102,9 @@ function main(config) {
   );
   const hasOtherNodes = otherProxies.length > 0;
 
+  // 定义全局策略组，方便统一管理
+  const GLOBAL_STRATEGIES = ["自动选择", "自动回退", "负载均衡", "手动切换"];
+
   // 构建代理组列表
   const proxyGroups = [];
 
@@ -108,7 +112,7 @@ function main(config) {
   const nodeSelectionProxies = [];
   availableRegions.forEach((region) => nodeSelectionProxies.push(region));
   if (hasOtherNodes) nodeSelectionProxies.push("其他节点");
-  nodeSelectionProxies.push("自动选择", "手动切换", "DIRECT");
+  nodeSelectionProxies.push(...GLOBAL_STRATEGIES, "DIRECT");
 
   // 节点选择
   proxyGroups.push({
@@ -126,6 +130,27 @@ function main(config) {
     type: "url-test",
     interval: 300,
     tolerance: 50,
+  });
+
+  // 自动回退（按顺序选择可用节点）
+  proxyGroups.push({
+    name: "自动回退",
+    icon: `${CDN_BASE}shindgewongxj/WHATSINStash@master/icon/fallback.png`,
+    "include-all": true,
+    type: "fallback",
+    url: "https://www.gstatic.com/generate_204",
+    interval: 300,
+  });
+
+  // 负载均衡（在多个节点间分散流量）
+  proxyGroups.push({
+    name: "负载均衡",
+    icon: `${CDN_BASE}shindgewongxj/WHATSINStash@master/icon/load-balance.png`,
+    "include-all": true,
+    type: "load-balance",
+    url: "https://www.gstatic.com/generate_204",
+    interval: 300,
+    strategy: "consistent-hashing",
   });
 
   // 手动切换
@@ -184,7 +209,7 @@ function main(config) {
   const finalProxies = ["节点选择"];
   availableRegions.forEach((region) => finalProxies.push(region));
   if (hasOtherNodes) finalProxies.push("其他节点");
-  finalProxies.push("自动选择", "手动切换", "DIRECT");
+  finalProxies.push(...GLOBAL_STRATEGIES, "DIRECT");
 
   // 漏网之鱼
   proxyGroups.push({
@@ -195,7 +220,7 @@ function main(config) {
   });
 
   // 构建 GLOBAL 的代理列表
-  const globalProxies = ["节点选择", "自动选择", "手动切换"];
+  const globalProxies = ["节点选择", ...GLOBAL_STRATEGIES];
   availableRegions.forEach((region) => globalProxies.push(region));
   if (hasOtherNodes) globalProxies.push("其他节点");
   globalProxies.push("广告拦截", "应用净化", "漏网之鱼");
