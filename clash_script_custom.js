@@ -1,3 +1,4 @@
+// v1.0.0
 function main(config) {
   // 获取所有代理节点
   const allProxies = config.proxies || [];
