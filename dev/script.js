@@ -59,9 +59,10 @@ function main(config) {
     const availableRegions = Object.keys(groupedProxies);
     const hasOtherNodes = ungroupedProxies.length > 0;
 
-
-    // 构建代理组列表
-    const proxyGroups = [];
+    const excludePattern = hasOtherNodes ? new RegExp(
+        Object.values(REGION_RULES).map(rule => rule.filter.source).join('|'),
+        'i'
+    ) : undefined;
 
     // 构建"节点选择"的代理列表
     const nodeSelectionProxies = [];
@@ -69,6 +70,7 @@ function main(config) {
     if (hasOtherNodes) nodeSelectionProxies.push("其他节点");
     nodeSelectionProxies.push("自动选择", "手动切换", "DIRECT");
 
+    const proxyGroups = [];
     // 节点选择
     proxyGroups.push({
         name: "节点选择",
@@ -96,7 +98,7 @@ function main(config) {
     });
 
     // 添加有节点的地区分组
-    for (const [regionName, regionConfig] of Object.entries(regionFilters)) {
+    for (const [regionName, regionConfig] of Object.entries(REGION_RULES)) {
         if (availableRegions.includes(regionName)) {
             proxyGroups.push({
                 name: regionName,
