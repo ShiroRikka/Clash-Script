@@ -1,27 +1,28 @@
 function main(config) {
     // 获取所有代理节点
     const allProxies = config.proxies || [];
-
+    const CDN_BASE = "https://cdn.jsdelivr.net/gh/"
+    const FLAGS_CDN = `${CDN_BASE}clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/`
     // 定义地区过滤规则
     const regionFilters = {
         "美国节点": {
-            icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png",
+            icon: `${FLAGS_CDN}us.svg`,
             filter: "美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
         },
         "日本节点": {
-            icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png",
+            icon: `${FLAGS_CDN}jp.svg`,
             filter: "日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan"
         },
-        "狮城节点": {
-            icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png",
+        "新加坡节点": {
+            icon: `${FLAGS_CDN}sg.svg`,
             filter: "新加坡|坡|狮城|SG|Singapore"
         },
         "香港节点": {
-            icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png",
+            icon: `${FLAGS_CDN}hk.svg`,
             filter: "港|HK|hk|Hong Kong|HongKong|hongkong"
         },
         "台湾节点": {
-            icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png",
+            icon: `${FLAGS_CDN}tw.svg`,
             filter: "台|新北|彰化|TW|Taiwan"
         }
     };
@@ -62,7 +63,7 @@ function main(config) {
     // 节点选择
     proxyGroups.push({
         name: "节点选择",
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png",
+        icon: `${CDN_BASE}Koolson/Qure@master/IconSet/Color/Proxy.png`,
         type: "select",
         proxies: nodeSelectionProxies
     });
@@ -70,7 +71,7 @@ function main(config) {
     // 自动选择（自动选择延迟最低的节点）
     proxyGroups.push({
         name: "自动选择",
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png",
+        icon: `${CDN_BASE}Koolson/Qure@master/IconSet/Color/Auto.png`,
         "include-all": true,
         type: "url-test",
         interval: 300,
@@ -80,7 +81,7 @@ function main(config) {
     // 手动切换
     proxyGroups.push({
         name: "手动切换",
-        icon: "https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png",
+        icon: `${CDN_BASE}shindgewongxj/WHATSINStash@master/icon/select.png`,
         "include-all": true,
         type: "select"
     });
@@ -104,7 +105,7 @@ function main(config) {
     if (hasOtherNodes) {
         proxyGroups.push({
             name: "其他节点",
-            icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png",
+            icon: `${CDN_BASE}Koolson/Qure@master/IconSet/Color/Global.png`,
             "include-all": true,
             "exclude-filter": excludePattern,
             type: "url-test",
@@ -116,7 +117,7 @@ function main(config) {
     // 广告拦截
     proxyGroups.push({
         name: "广告拦截",
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png",
+        icon: `${CDN_BASE}Koolson/Qure@master/IconSet/Color/AdBlack.png`,
         type: "select",
         proxies: ["REJECT", "DIRECT"]
     });
@@ -124,7 +125,7 @@ function main(config) {
     // 应用净化
     proxyGroups.push({
         name: "应用净化",
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png",
+        icon: `${CDN_BASE}Koolson/Qure@master/IconSet/Color/Hijacking.png`,
         type: "select",
         proxies: ["REJECT", "DIRECT"]
     });
@@ -138,7 +139,7 @@ function main(config) {
     // 漏网之鱼
     proxyGroups.push({
         name: "漏网之鱼",
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png",
+        icon: `${CDN_BASE}Koolson/Qure@master/IconSet/Color/Final.png`,
         type: "select",
         proxies: finalProxies
     });
@@ -152,7 +153,7 @@ function main(config) {
     // GLOBAL
     proxyGroups.push({
         name: "GLOBAL",
-        icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png",
+        icon: `${CDN_BASE}Koolson/Qure@master/IconSet/Color/Global.png`,
         "include-all": true,
         type: "select",
         proxies: globalProxies
@@ -163,7 +164,7 @@ function main(config) {
     // 规则提供者配置
     config["rule-providers"] = {
         LocalAreaNetwork: {
-            url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/LocalAreaNetwork.list",
+            url: `${CDN_BASE}ACL4SSR/ACL4SSR@master/Clash/LocalAreaNetwork.list`,
             path: "./ruleset/LocalAreaNetwork.list",
             behavior: "classical",
             interval: 86400,
@@ -171,7 +172,7 @@ function main(config) {
             type: "http"
         },
         UnBan: {
-            url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/UnBan.list",
+            url: `${CDN_BASE}ACL4SSR/ACL4SSR@master/Clash/UnBan.list`,
             path: "./ruleset/UnBan.list",
             behavior: "classical",
             interval: 86400,
@@ -179,7 +180,7 @@ function main(config) {
             type: "http"
         },
         BanAD: {
-            url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanAD.list",
+            url: `${CDN_BASE}ACL4SSR/ACL4SSR@master/Clash/BanAD.list`,
             path: "./ruleset/BanAD.list",
             behavior: "classical",
             interval: 86400,
@@ -187,7 +188,7 @@ function main(config) {
             type: "http"
         },
         BanProgramAD: {
-            url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanProgramAD.list",
+            url: `${CDN_BASE}ACL4SSR/ACL4SSR@master/Clash/BanProgramAD.list`,
             path: "./ruleset/BanProgramAD.list",
             behavior: "classical",
             interval: 86400,
@@ -195,7 +196,7 @@ function main(config) {
             type: "http"
         },
         ProxyGFWlist: {
-            url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyGFWlist.list",
+            url: `${CDN_BASE}ACL4SSR/ACL4SSR@master/Clash/ProxyGFWlist.list`,
             path: "./ruleset/ProxyGFWlist.list",
             behavior: "classical",
             interval: 86400,
@@ -203,7 +204,7 @@ function main(config) {
             type: "http"
         },
         ChinaDomain: {
-            url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaDomain.list",
+            url: `${CDN_BASE}ACL4SSR/ACL4SSR@master/Clash/ChinaDomain.list`,
             path: "./ruleset/ChinaDomain.list",
             behavior: "domain",
             interval: 86400,
@@ -211,7 +212,7 @@ function main(config) {
             type: "http"
         },
         ChinaCompanyIp: {
-            url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaCompanyIp.list",
+            url: `${CDN_BASE}ACL4SSR/ACL4SSR@master/Clash/ChinaCompanyIp.list`,
             path: "./ruleset/ChinaCompanyIp.list",
             behavior: "ipcidr",
             interval: 86400,
@@ -219,7 +220,7 @@ function main(config) {
             type: "http"
         },
         Download: {
-            url: "https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Download.list",
+            url: `${CDN_BASE}ACL4SSR/ACL4SSR@master/Clash/Download.list`,
             path: "./ruleset/Download.list",
             behavior: "classical",
             interval: 86400,
