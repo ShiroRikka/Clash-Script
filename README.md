@@ -1,5 +1,6 @@
 
 ## 描述
+### 可通过``` https://cdn.jsdelivr.net/gh/ShiroRikka/Clash-Script@main/clash_script_custom.js``` 直接导入
 
 该脚本用于配置 Clash，例如Verge和FlClash，特别是定义规则提供者和规则。它从 [Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules) 
 GitHub 
