@@ -5,8 +5,8 @@ function main(config) {
     const CDN_BASE = "https://testingcf.jsdelivr.net/gh";
     const FLAGS_CDN = "https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/"
 
-    // 定义地区过滤规则，直接使用正则表达式以提高性能
-    const regionFilters = {
+    // 定义地区过滤规则
+    const REGION_RULES = {
         "美国节点": {
             icon: `${FLAGS_CDN}/us.svg`,
             filter: /美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States/i
@@ -29,32 +29,36 @@ function main(config) {
         }
     };
 
-    // 优化后的逻辑：单次遍历所有代理，性能更高
-    const regionProxies = {};
+    // 优化：在一次遍历中完成所有分组和识别未匹配项的工作
+    const groupedProxies = {};
+    const ungroupedProxies = [];
+
+    const ruleEntries = Object.entries(REGION_RULES);
+
     for (const proxy of allProxies) {
-        for (const [regionName, regionConfig] of Object.entries(regionFilters)) {
-            if (regionConfig.filter.test(proxy.name)) {
-                if (!regionProxies[regionName]) {
-                    regionProxies[regionName] = [];
+        let matched = false;
+        for (const [regionName, rule] of ruleEntries) {
+            if (rule.filter.test(proxy.name)) {
+                if (!groupedProxies[regionName]) {
+                    groupedProxies[regionName] = {
+                        icon: rule.icon,
+                        proxies: []
+                    };
                 }
-                regionProxies[regionName].push(proxy);
-                break; // 假设一个节点只属于一个地区，找到后即可跳出循环
+                groupedProxies[regionName].proxies.push(proxy);
+                matched = true;
+                break; // 一个节点只属于一个地区，找到后跳出内层循环
             }
+        }
+        if (!matched) {
+            ungroupedProxies.push(proxy);
         }
     }
 
-    // 从结果中获取可用地区列表
-    const availableRegions = Object.keys(regionProxies);
+    // 从结果中提取所需信息
+    const availableRegions = Object.keys(groupedProxies);
+    const hasOtherNodes = ungroupedProxies.length > 0;
 
-    // 构建"其他节点"的排除过滤器
-    const excludePattern = Object.values(regionFilters)
-        .map(r => r.filter.replace(/\(\?i\)/g, ""))
-        .join("|");
-
-    // 检测是否有"其他节点"
-    const otherRegex = new RegExp(excludePattern, "i");
-    const otherProxies = allProxies.filter(proxy => !otherRegex.test(proxy.name));
-    const hasOtherNodes = otherProxies.length > 0;
 
     // 构建代理组列表
     const proxyGroups = [];
