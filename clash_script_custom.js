@@ -145,7 +145,7 @@ function main(config) {
   // 负载均衡（在多个节点间分散流量）
   proxyGroups.push({
     name: "负载均衡",
-    icon: `${CDN_BASE}shindgewongxj/WHATSINStash@master/icon/load-balance.png`,
+    icon: `${CDN_BASE}clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg`,
     "include-all": true,
     type: "load-balance",
     url: "https://www.gstatic.com/generate_204",
