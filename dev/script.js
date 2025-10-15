@@ -6,23 +6,23 @@ function main(config) {
     const regionFilters = {
         "美国节点": {
             icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png",
-            filter: "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
+            filter: "美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
         },
         "日本节点": {
             icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png",
-            filter: "(?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan"
+            filter: "日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan"
         },
         "狮城节点": {
             icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png",
-            filter: "(?i)新加坡|坡|狮城|SG|Singapore"
+            filter: "新加坡|坡|狮城|SG|Singapore"
         },
         "香港节点": {
             icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png",
-            filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong"
+            filter: "港|HK|hk|Hong Kong|HongKong|hongkong"
         },
         "台湾节点": {
             icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png",
-            filter: "(?i)台|新北|彰化|TW|Taiwan"
+            filter: "台|新北|彰化|TW|Taiwan"
         }
     };
 
@@ -31,9 +31,7 @@ function main(config) {
     const regionProxies = {};
 
     for (const [regionName, regionConfig] of Object.entries(regionFilters)) {
-        // 移除(?i)标志，用'i' flag代替
-        const pattern = regionConfig.filter.replace(/\(\?i\)/g, "");
-        const regex = new RegExp(pattern, "i");
+        const regex = new RegExp(regionConfig.filter, "i");
         const matchedProxies = allProxies.filter(proxy => regex.test(proxy.name));
 
         if (matchedProxies.length > 0) {
@@ -44,7 +42,7 @@ function main(config) {
 
     // 构建"其他节点"的排除过滤器
     const excludePattern = Object.values(regionFilters)
-        .map(r => r.filter.replace(/\(\?i\)/g, ""))
+        .map(r => r.filter)
         .join("|");
 
     // 检测是否有"其他节点"
