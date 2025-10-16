@@ -3,7 +3,7 @@ function main(config) {
   // 获取所有代理节点
   const allProxies = config.proxies || [];
   const CDN_BASE = "https://cdn.jsdelivr.net/gh/";
-  const FLAGS_CDN = `${CDN_BASE}clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/`;
+  const FLAGS_CDN = `${CDN_BASE}lipis/flag-icons@main/flags/4x3/`;
   // 定义地区过滤规则
   const regionFilters = {
     美国节点: {
@@ -172,7 +172,7 @@ function main(config) {
 
   proxyGroups.push({
     name: "负载均衡-粘滞",
-    icon: `${CDN_BASE}clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg`,
+    icon: `${CDN_BASE}clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg`,
     "include-all": true,
     type: "load-balance",
     url: "https://www.gstatic.com/generate_204",
