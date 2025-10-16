@@ -74,6 +74,14 @@ function main(config) {
       icon: `${FLAGS_CDN}au.svg`,
       filter: "AU|Australia|澳大利亚|悉尼|墨尔本",
     },
+    瑞典节点: {
+      icon: `${FLAGS_CDN}se.svg`,
+      filter: "SE|Sweden|瑞典|斯德哥尔摩",
+    },
+    中国节点: {
+      icon: `${FLAGS_CDN}cn.svg`,
+      filter: "CN|China|中国|宁波",
+    },
   };
 
   // 检测每个地区是否有节点
