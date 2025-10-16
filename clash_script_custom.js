@@ -102,23 +102,13 @@ function main(config) {
   );
   const hasOtherNodes = otherProxies.length > 0;
 
-  // 定义负载均衡策略
-  const LOAD_BALANCE_STRATEGIES = [
-    "负载均衡-轮询",
-    "负载均衡-哈希",
-    "负载均衡-粘滞",
-  ];
-  const strategyMap = {
-    "负载均衡-轮询": "round-robin",
-    "负载均衡-哈希": "consistent-hashing",
-    "负载均衡-粘滞": "sticky-sessions",
-  };
-
   // 定义全局策略组，方便统一管理
   const GLOBAL_STRATEGIES = [
     "自动选择",
     "自动回退",
-    ...LOAD_BALANCE_STRATEGIES,
+    "负载均衡-轮询",
+    "负载均衡-哈希",
+    "负载均衡-粘滞",
     "手动切换",
   ];
 
@@ -160,17 +150,35 @@ function main(config) {
   });
 
   // 负载均衡（在多个节点间分散流量）
-  for (const name of LOAD_BALANCE_STRATEGIES) {
-    proxyGroups.push({
-      name: name,
-      icon: `${CDN_BASE}clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg`,
-      "include-all": true,
-      type: "load-balance",
-      url: "https://www.gstatic.com/generate_204",
-      interval: 300,
-      strategy: strategyMap[name],
-    });
-  }
+  proxyGroups.push({
+    name: "负载均衡-轮询",
+    icon: `${CDN_BASE}clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg`,
+    "include-all": true,
+    type: "load-balance",
+    url: "https://www.gstatic.com/generate_204",
+    interval: 300,
+    strategy: "round-robin",
+  });
+
+  proxyGroups.push({
+    name: "负载均衡-哈希",
+    icon: `${CDN_BASE}clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/merry_go.svg`,
+    "include-all": true,
+    type: "consistent-hashing",
+    url: "https://www.gstatic.com/generate_204",
+    interval: 300,
+    strategy: "round-robin",
+  });
+
+  proxyGroups.push({
+    name: "负载均衡-粘滞",
+    icon: `${CDN_BASE}clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg`,
+    "include-all": true,
+    type: "load-balance",
+    url: "https://www.gstatic.com/generate_204",
+    interval: 300,
+    strategy: "sticky-sessions",
+  });
 
   // 手动切换
   proxyGroups.push({
