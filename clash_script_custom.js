@@ -1,4 +1,4 @@
-// v1.0.0
+// v1.1.0
 function main(config) {
   // 获取所有代理节点
   const allProxies = config.proxies || [];
@@ -164,10 +164,10 @@ function main(config) {
     name: "负载均衡-哈希",
     icon: `${CDN_BASE}clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/merry_go.svg`,
     "include-all": true,
-    type: "consistent-hashing",
+    type: "load-balance",
     url: "https://www.gstatic.com/generate_204",
     interval: 300,
-    strategy: "round-robin",
+    strategy: "consistent-hashing",
   });
 
   proxyGroups.push({
