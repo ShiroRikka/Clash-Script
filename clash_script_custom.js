@@ -7,8 +7,7 @@ function main(config) {
   const regionFilters = {
     美国节点: {
       icon: `${FLAGS_CDN}us.svg`,
-      filter:
-        "美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States",
+      filter: "美|波特兰|US|United States",
     },
     日本节点: {
       icon: `${FLAGS_CDN}jp.svg`,
@@ -102,8 +101,25 @@ function main(config) {
   );
   const hasOtherNodes = otherProxies.length > 0;
 
+  // 定义负载均衡策略
+  const LOAD_BALANCE_STRATEGIES = [
+    "负载均衡-轮询",
+    "负载均衡-哈希",
+    "负载均衡-粘滞",
+  ];
+  const strategyMap = {
+    "负载均衡-轮询": "round-robin",
+    "负载均衡-哈希": "consistent-hashing",
+    "负载均衡-粘滞": "sticky-sessions",
+  };
+
   // 定义全局策略组，方便统一管理
-  const GLOBAL_STRATEGIES = ["自动选择", "自动回退", "负载均衡", "手动切换"];
+  const GLOBAL_STRATEGIES = [
+    "自动选择",
+    "自动回退",
+    ...LOAD_BALANCE_STRATEGIES,
+    "手动切换",
+  ];
 
   // 构建代理组列表
   const proxyGroups = [];
@@ -143,15 +159,17 @@ function main(config) {
   });
 
   // 负载均衡（在多个节点间分散流量）
-  proxyGroups.push({
-    name: "负载均衡",
-    icon: `${CDN_BASE}clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg`,
-    "include-all": true,
-    type: "load-balance",
-    url: "https://www.gstatic.com/generate_204",
-    interval: 300,
-    strategy: "consistent-hashing",
-  });
+  for (const name of LOAD_BALANCE_STRATEGIES) {
+    proxyGroups.push({
+      name: name,
+      icon: `${CDN_BASE}clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg`,
+      "include-all": true,
+      type: "load-balance",
+      url: "https://www.gstatic.com/generate_204",
+      interval: 300,
+      strategy: strategyMap[name],
+    });
+  }
 
   // 手动切换
   proxyGroups.push({
