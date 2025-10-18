@@ -1,4 +1,4 @@
-// v1.1.2
+// v1.1.3
 function main(config) {
   // 获取所有代理节点
   const allProxies = config.proxies || [];
@@ -6,75 +6,75 @@ function main(config) {
   const FLAGS_CDN = `${CDN_BASE}lipis/flag-icons@main/flags/4x3/`;
   // 定义地区过滤规则
   const regionFilters = {
-    美国节点: {
+    US美国节点: {
       icon: `${FLAGS_CDN}us.svg`,
       filter: "美|波特兰|US|United States",
     },
-    日本节点: {
+    JP日本节点: {
       icon: `${FLAGS_CDN}jp.svg`,
       filter: "日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan",
     },
-    新加坡节点: {
+    SG新加坡节点: {
       icon: `${FLAGS_CDN}sg.svg`,
       filter: "新加坡|坡|狮城|SG|Singapore",
     },
-    香港节点: {
+    HK香港节点: {
       icon: `${FLAGS_CDN}hk.svg`,
       filter: "港|HK|hk|Hong Kong|HongKong|hongkong",
     },
-    台湾节点: {
+    TW台湾节点: {
       icon: `${FLAGS_CDN}tw.svg`,
       filter: "台|新北|彰化|TW|Taiwan",
     },
-    加拿大节点: {
+    CA加拿大节点: {
       icon: `${FLAGS_CDN}ca.svg`,
       filter: "CA|Canada|加拿大|多伦多|温哥华",
     },
-    德国节点: {
+    DE德国节点: {
       icon: `${FLAGS_CDN}de.svg`,
       filter: "DE|Germany|德国|法兰克福",
     },
-    法国节点: {
+    FR法国节点: {
       icon: `${FLAGS_CDN}fr.svg`,
       filter: "FR|France|法国|巴黎",
     },
-    俄罗斯节点: {
+    RU俄罗斯节点: {
       icon: `${FLAGS_CDN}ru.svg`,
       filter: "RU|Russia|俄罗斯|莫斯科",
     },
-    韩国节点: {
+    KR韩国节点: {
       icon: `${FLAGS_CDN}kr.svg`,
       filter: "KR|Korea|韩国|首尔",
     },
-    联合国节点: {
+    UN联合国节点: {
       icon: `${FLAGS_CDN}un.svg`,
       filter: "UN|United Nations|联合国",
     },
-    英国节点: {
+    GB英国节点: {
       icon: `${FLAGS_CDN}gb.svg`,
       filter: "UK|GB|United Kingdom|英国|伦敦|Britain",
     },
-    印度节点: {
+    IN印度节点: {
       icon: `${FLAGS_CDN}in.svg`,
       filter: "IND|India|印度|孟买",
     },
-    荷兰节点: {
+    NL荷兰节点: {
       icon: `${FLAGS_CDN}nl.svg`,
       filter: "NL|Netherlands|荷兰|阿姆斯特丹",
     },
-    越南节点: {
+    VN越南节点: {
       icon: `${FLAGS_CDN}vn.svg`,
       filter: "VN|Vietnam|越南",
     },
-    伊朗节点: {
+    IR伊朗节点: {
       icon: `${FLAGS_CDN}ir.svg`,
       filter: "IR|Iran|伊朗|德黑兰",
     },
-    澳大利亚节点: {
+    AU澳大利亚节点: {
       icon: `${FLAGS_CDN}au.svg`,
       filter: "AU|Australia|澳大利亚|悉尼|墨尔本",
     },
-    瑞典节点: {
+    SE瑞典节点: {
       icon: `${FLAGS_CDN}se.svg`,
       filter: "SE|Sweden|瑞典|斯德哥尔摩",
     },
@@ -139,6 +139,7 @@ function main(config) {
     name: "自动选择",
     icon: `${CDN_BASE}Koolson/Qure@master/IconSet/Color/Auto.png`,
     "include-all": true,
+    "exclude-filter": "CN|China|中国|国内|cn",
     type: "url-test",
     interval: 300,
     tolerance: 50,
@@ -149,6 +150,7 @@ function main(config) {
     name: "自动回退",
     icon: `${CDN_BASE}shindgewongxj/WHATSINStash@master/icon/fallback.png`,
     "include-all": true,
+    "exclude-filter": "CN|China|中国|国内|cn",
     type: "fallback",
     url: "https://www.gstatic.com/generate_204",
     interval: 300,
@@ -159,6 +161,7 @@ function main(config) {
     name: "负载均衡-轮询",
     icon: `${CDN_BASE}clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg`,
     "include-all": true,
+    "exclude-filter": "CN|China|中国|国内|cn",
     type: "load-balance",
     url: "https://www.gstatic.com/generate_204",
     interval: 300,
@@ -169,6 +172,7 @@ function main(config) {
     name: "负载均衡-哈希",
     icon: `${CDN_BASE}clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/merry_go.svg`,
     "include-all": true,
+    "exclude-filter": "CN|China|中国|国内|cn",
     type: "load-balance",
     url: "https://www.gstatic.com/generate_204",
     interval: 300,
@@ -179,6 +183,7 @@ function main(config) {
     name: "负载均衡-粘滞",
     icon: `${CDN_BASE}clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg`,
     "include-all": true,
+    "exclude-filter": "CN|China|中国|国内|cn",
     type: "load-balance",
     url: "https://www.gstatic.com/generate_204",
     interval: 300,
@@ -190,6 +195,7 @@ function main(config) {
     name: "手动切换",
     icon: `${CDN_BASE}shindgewongxj/WHATSINStash@master/icon/select.png`,
     "include-all": true,
+    "exclude-filter": "CN|China|中国|国内|cn",
     type: "select",
   });
 
