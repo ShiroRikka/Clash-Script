@@ -1,4 +1,4 @@
-// v1.1.1
+// v1.1.2
 function main(config) {
   // 获取所有代理节点
   const allProxies = config.proxies || [];
@@ -78,10 +78,6 @@ function main(config) {
       icon: `${FLAGS_CDN}se.svg`,
       filter: "SE|Sweden|瑞典|斯德哥尔摩",
     },
-    中国节点: {
-      icon: `${FLAGS_CDN}cn.svg`,
-      filter: "CN|China|中国|宁波",
-    },
   };
 
   // 检测每个地区是否有节点
@@ -99,9 +95,10 @@ function main(config) {
   }
 
   // 构建"其他节点"的排除过滤器
-  const excludePattern = Object.values(regionFilters)
-    .map((r) => r.filter)
-    .join("|");
+  const excludePattern =
+    Object.values(regionFilters)
+      .map((r) => r.filter)
+      .join("|") + "|CN|China";
 
   // 检测是否有"其他节点"
   const otherRegex = new RegExp(excludePattern, "i");
